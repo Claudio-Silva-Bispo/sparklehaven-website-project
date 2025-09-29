@@ -43,21 +43,21 @@ const Hero: React.FC = () => {
         <div className="container mx-auto px-5 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             {/* Hero Text */}
-            <div className="animate-fadeInUp pt-10 xl:pt-0">
+            <div className="animate-fadeInUp pt-3 xl:pt-0">
               <div className="inline-flex items-center gap-2 bg-blue-500/10 ring-1 ring-blue-500/30 rounded-full text-sm text-blue-400 font-medium mb-6 min-w-full md:min-w-sm">
                 <span className='p-3'>🏠</span> <p className='p-3'>Empresa Familiar • Seattle, WA</p>
               </div>
               
-              <h1 className="text-2xl md:text-5xl lg:text-4xl xl:text-5xl font-extrabold mb-6 leading-tight bg-gradient-to-r from-white to-blue-400 bg-clip-text text-transparent pt-2 xl:pt-0">
+              <h1 className="text-2xl md:text-5xl lg:text-4xl xl:text-5xl font-extrabold leading-tight bg-gradient-to-r from-white to-blue-400 bg-clip-text text-transparent">
                 Limpeza Profissional para seu Lar e seu Negócio
               </h1>
               
-              <p className="md:text-xl text-gray-400 mb-10 leading-relaxed">
+              <p className="md:text-xl text-gray-400 mb-3 leading-relaxed pt-3">
                 Transformamos seu espaço com serviços de limpeza de alta qualidade. Atendemos residências, escritórios e estabelecimentos comerciais na região de Seattle.
               </p>
               
               <div className="mb-10">
-                <div className="flex flex-col gap-4">
+                <div className="flex flex-col gap-3">
                   {[
                     { icon: '🏡', text: 'Limpeza Residencial - Cuidado com sua Casa' },
                     { icon: '🏢', text: 'Limpeza Comercial - Ambientes Profissionais' },
@@ -65,9 +65,9 @@ const Hero: React.FC = () => {
                   ].map((service, index) => (
                     <div 
                       key={index}
-                      className="flex items-center gap-4 p-1 ld:p-3 bg-blue-500/5 ring-1 ring-blue-500/20 rounded-lg transition-all duration-300 hover:bg-blue-500/10 hover:translate-x-2"
+                      className="flex items-center gap-2 p-1 ld:p-3 bg-blue-500/5 ring-1 ring-blue-500/20 rounded-lg transition-all duration-300 hover:bg-blue-500/10 hover:translate-x-2"
                     >
-                      <div className="text-2xl w-10 text-center p-3">{service.icon}</div>
+                      <div className="text-2xl w-10 text-center p-2 lg:p-3">{service.icon}</div>
                       <div className="text-gray-300 font-medium text-sm lg:text-md">{service.text}</div>
                     </div>
                   ))}
@@ -77,7 +77,7 @@ const Hero: React.FC = () => {
               <div className="flex flex-col sm:flex-row gap-4 items-center">
                 <button 
                   onClick={() => scrollToSection('contact')}
-                  className="bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-blue-500/25 flex items-center gap-2"
+                  className="bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white px-6 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-blue-500/25 flex items-center gap-2"
                 >
                   📞 Free Estimate
                 </button>
@@ -104,7 +104,7 @@ const Hero: React.FC = () => {
                     <button
                       key={tab.key}
                       onClick={() => setActivePanel(tab.key as typeof activePanel)}
-                      className={`px-4 py-2 lg:px-8 lg:py-2 rounded-full text-sm lg:text-md font-medium transition-all duration-300 ring-1 w-[15vh] md:w-[20vh] ${
+                      className={`px-2 py-2 lg:px-8 lg:py-2 rounded-full text-sm lg:text-md font-medium transition-all duration-300 ring-1 w-[15vh] md:w-[20vh] ${
                         activePanel === tab.key
                           ? "bg-blue-500/30 ring-blue-500/50 text-white"
                           : "bg-blue-500/10 ring-blue-500/20 text-blue-400 hover:bg-blue-500/20"
@@ -116,7 +116,7 @@ const Hero: React.FC = () => {
                 </div>
 
                 {/* Container com altura fixa */}
-                <div className="relative w-full" style={{ height: '600px' }}>
+                <div className="relative min-w-full" style={{ height: '600px' }}>
                   
                   {/* Residential Panel */}
                   <div className={`absolute inset-0 transition-opacity duration-500 overflow-y-auto ${
