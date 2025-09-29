@@ -79,10 +79,10 @@ const Hero: React.FC = () => {
                   className="bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white px-6 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-blue-500/25 flex items-center gap-2"
                 >
                   <a 
-              href="tel:+14255886654" 
-            >
-              📞 Free Estimate
-            </a>
+                    href="tel:+14255886654" 
+                  >
+                    📞 Free Estimate
+                  </a>
                 </button>
                 <button 
                   onClick={() => scrollToSection('services')}
