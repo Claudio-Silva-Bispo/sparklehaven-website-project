@@ -128,7 +128,7 @@ export default function Navbar() {
   }, [isMobileMenuOpen]);
 
   return (
-    <header className="top-0 left-0 right-0 z-50 bg-white shadow-md">
+    <header className="top-0 left-0 right-0 z-50 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white">
       {/* Container principal respeitando o limite de 1280px */}
       <div className="max-w-[1440px] mx-auto px-4">
         <div className="flex justify-between items-center h-16">
@@ -150,7 +150,7 @@ export default function Navbar() {
           <nav className="hidden lg:flex items-center space-x-1">
             <button 
               onClick={() => handleNavigation('/', 'page')} 
-              className={`px-3 py-2 text-sm hover:bg-[#78B2FB] hover:text-white rounded-md flex items-center space-x-2 transition-colors ${pathname === '/' ? 'bg-[#2C394C] text-white' : 'text-gray-700'}`}
+              className={`px-3 py-2 text-sm hover:bg-blue-500 hover:text-blue-100 rounded-md flex items-center space-x-2 transition-colors ${pathname === '/' ? 'bg-blue-500 text-white' : 'text-white'}`}
             >
               <FontAwesomeIcon icon={faHome} className="w-4 h-4" />
               <span>Inicio</span>
@@ -158,7 +158,7 @@ export default function Navbar() {
             
             <button 
               onClick={() => handleNavigation('#contact', 'section')} 
-              className={`px-3 py-2 text-sm hover:bg-[#2C394C] hover:text-white rounded-md flex items-center space-x-2 transition-colors ${activeHash === '#FormQuote' ? 'bg-[#2C394C] text-white' : 'text-gray-700'}`}
+              className={`px-3 py-2 text-sm hover:bg-blue-500 hover:text-white rounded-md flex items-center space-x-2 transition-colors ${activeHash === '#FormQuote' ? 'bg-[#2C394C] text-white' : 'text-gray-700'}`}
             >
               <FontAwesomeIcon icon={faCalendarAlt} className="w-4 h-4" />
               <span>Orçamento</span>
@@ -166,7 +166,7 @@ export default function Navbar() {
 
              <button 
               onClick={() => handleNavigation('WebDevelopment', 'page')} 
-              className={`px-3 py-2 text-sm hover:bg-[#2C394C] hover:text-white rounded-md flex items-center space-x-2 transition-colors ${activeHash === '#Service' ? 'bg-[#2C394C] text-white' : 'text-gray-700'}`}
+              className={`px-3 py-2 text-sm hover:bg-blue-500 hover:text-white rounded-md flex items-center space-x-2 transition-colors ${activeHash === '#Service' ? 'bg-[#2C394C] text-white' : 'text-gray-700'}`}
             >
               <FontAwesomeIcon icon={faGlobe} className="w-4 h-4" />
               <span>Contato</span>
@@ -174,7 +174,7 @@ export default function Navbar() {
 
              <button 
               onClick={() => handleNavigation('DocumentationTrainingSection', 'page')} 
-              className={`px-3 py-2 text-sm hover:bg-[#2C394C] hover:text-white rounded-md flex items-center space-x-2 transition-colors ${activeHash === '#Service' ? 'bg-[#2C394C] text-white' : 'text-gray-700'}`}
+              className={`px-3 py-2 text-sm hover:bg-blue-500 hover:text-white rounded-md flex items-center space-x-2 transition-colors ${activeHash === '#Service' ? 'bg-[#2C394C] text-white' : 'text-gray-700'}`}
             >
               <FontAwesomeIcon icon={faQuestionCircle} className="w-4 h-4" />
               <span>Serviços</span>
@@ -182,7 +182,7 @@ export default function Navbar() {
 
             <button 
               onClick={() => handleNavigation('About', 'page')} 
-              className={`px-3 py-2 text-sm hover:bg-[#2C394C] hover:text-white rounded-md flex items-center space-x-2 transition-colors ${activeHash === '#About' ? 'bg-[#2C394C] text-white' : 'text-gray-700'}`}
+              className={`px-3 py-2 text-sm hover:bg-blue-500 hover:text-white rounded-md flex items-center space-x-2 transition-colors ${activeHash === '#About' ? 'bg-[#2C394C] text-white' : 'text-gray-700'}`}
             >
               <FontAwesomeIcon icon={faUsers} className="w-4 h-4" />
               <span>Sobre</span>
@@ -190,7 +190,7 @@ export default function Navbar() {
 
             <button 
               onClick={() => handleNavigation('FeedbackForm', 'page')} 
-              className={`px-3 py-2 text-sm hover:bg-[#2C394C] hover:text-white rounded-md flex items-center space-x-2 transition-colors ${activeHash === '#About' ? 'bg-[#2C394C] text-white' : 'text-gray-700'}`}
+              className={`px-3 py-2 text-sm hover:bg-blue-500 hover:text-white rounded-md flex items-center space-x-2 transition-colors ${activeHash === '#About' ? 'bg-[#2C394C] text-white' : 'text-gray-700'}`}
             >
               <FontAwesomeIcon icon={faStar} className="w-4 h-4" />
               <span>Review</span>
@@ -202,14 +202,14 @@ export default function Navbar() {
           <div className="hidden xl:flex items-center">
             <a 
               href="tel:+14255886654" 
-              className="px-4 py-2 bg-[#2C394C] hover:bg-[#78B2FB] text-white rounded-md transition-colors text-sm font-medium"
+              className="bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white px-8 py-2 rounded-lg font-semibold text-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-blue-500/25 flex items-center gap-2"
             >
-              (425) 476-5411
+              📞 +1 (425) 476-5411
             </a>
           </div>
           
           {/* Logo Mobile - centralizado */}
-          <div className="flex lg:hidden items-center text-center transform-translate-x-1/2">
+          {/* <div className="flex lg:hidden items-center text-center transform-translate-x-1/2">
             <button onClick={() => handleNavigation('/', 'page')} className="flex items-center">
               <Image 
                 width={120} 
@@ -219,13 +219,12 @@ export default function Navbar() {
                 className="w-24 h-24 object-contain"
               />
             </button>
-            <p className='text-sm'>BC Tech Solutions & Advisory</p>
-          </div>
+          </div> */}
           
           {/* Botão Hamburger - apenas mobile */}
           <button 
             onClick={toggleMobileMenu} 
-            className="lg:hidden p-2 text-gray-700 hover:text-[#9b4819] transition-colors"
+            className="lg:hidden p-2 text-gray-200 hover:text-[#9b4819] transition-colors"
             aria-label="Abrir menu"
           >
             <FontAwesomeIcon icon={faBars} className="w-6 h-6" />
@@ -235,14 +234,14 @@ export default function Navbar() {
 
       {/* Menu Mobile Overlay */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden">
-          <div className="fixed inset-y-0 right-0 w-full max-w-full bg-[#78B2FB] shadow-xl">
+        <div className="fixed inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white z-40 lg:hidden">
+          <div className="fixed inset-y-0 right-0 w-full max-w-full shadow-xl">
             {/* Header do menu mobile */}
-            <div className="flex items-center justify-between p-4 border-b border-[#2C394C] border-opacity-20">
-              <h2 className="text-lg font-semibold text-[#2C394C]">Menu</h2>
+            <div className="flex items-center justify-between p-4 border-b border-[#78B2FB] border-opacity-20">
+              <h2 className="text-lg font-semibold text-white">Menu</h2>
               <button 
                 onClick={toggleMobileMenu} 
-                className="p-2 text-[#2C394C] hover:bg-[#2C394C] hover:bg-opacity-10 rounded-lg transition-colors"
+                className="p-2 text-[#78B2FB] hover:bg-[#78B2FB] hover:bg-opacity-10 rounded-lg transition-colors"
                 aria-label="Fechar menu"
               >
                 <svg
@@ -263,7 +262,7 @@ export default function Navbar() {
                 <button
                   key={menuItem.item}
                   onClick={() => handleNavigation(menuItem.path, menuItem.type)}
-                  className="flex items-center space-x-3 px-6 py-4 text-[#2C394C] hover:bg-[#9b4819] hover:bg-opacity-10 transition-colors text-left"
+                  className="flex items-center space-x-3 px-6 py-4 text-white hover:bg-[#9b4819] hover:bg-opacity-10 transition-colors text-left"
                 >
                   <FontAwesomeIcon icon={menuItem.icon} className="w-5 h-5" />
                   <span className="font-medium">{menuItem.item}</span>
@@ -274,7 +273,7 @@ export default function Navbar() {
               <div className="px-6 pt-4">
                 <a 
                   href="tel:+14254765411" 
-                  className="flex items-center justify-center w-full px-4 py-3 bg-[#2C394C] hover:bg-[#7a3614] text-white rounded-lg transition-colors font-medium"
+                  className="flex items-center justify-center w-full px-4 py-3 bg-[#78B2FB] hover:bg-[#7a3614] text-white rounded-lg transition-colors font-medium"
                 >
                   <FontAwesomeIcon icon={faPhone} className="w-4 h-4 mr-2" />
                   Ligar Agora

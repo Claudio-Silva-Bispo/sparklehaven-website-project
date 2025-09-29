@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 
 const Footer = () => {
@@ -26,50 +25,50 @@ const Footer = () => {
             {/* Logo */}
             <div className="flex items-center gap-4 mb-6">
               <div className="w-24 h-24 lg:w-16 lg:h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center text-lg lg:text-xl font-bold text-white">
-                <img src="/logo/logo-principal/transparent-logo-icone.png" alt="" />
+                ✨
               </div>
               <div className="text-xl lg:text-2xl font-bold text-blue-400">
-                BC Tech Solutions & Advisory
+                Sparkle Haven Cleaning Service
               </div>
             </div>
             
             {/* Tagline */}
             <p className="text-gray-400 mb-6 text-base lg:text-lg font-medium">
-              Transformando dados em decisões estratégicas e Criação de soluções digitais simples e eficazes.
+              Transformando casas em lares impecáveis na região de Seattle
             </p>
             
             {/* Description */}
             <p className="text-gray-300 text-sm lg:text-base leading-relaxed mb-6 max-w-md">
-              Experiência em Engenharia de Dados, Power BI e desenvolvimento web 
-              para pequenas empresas que querem crescer com inteligência.
+              Empresa familiar especializada em limpeza residencial, comercial e de escritórios. 
+              Atendemos com carinho e profissionalismo desde 2015.
             </p>
             
             {/* Social Links */}
             <div className="flex gap-3 lg:gap-4">
               <a 
-                href="https://wa.me/5511999999999" 
-                className="w-10 h-10 lg:w-12 lg:h-12 bg-blue-500/10 border border-blue-500/20 rounded-lg flex items-center justify-center text-lg lg:text-xl hover:bg-blue-500/20 hover:border-blue-500/40 hover:-translate-y-1 transition-all duration-300"
+                href="https://wa.me/12065551234" 
+                className="w-10 h-10 lg:w-12 lg:h-12 bg-blue-500/10 ring-1 ring-blue-500/20 rounded-lg flex items-center justify-center text-lg lg:text-xl hover:bg-blue-500/20 hover:ring-blue-500/40 hover:-translate-y-1 transition-all duration-300"
                 aria-label="WhatsApp"
               >
                 📱
               </a>
               <a 
-                href="mailto:contato@techdatasolutions.com.br" 
-                className="w-10 h-10 lg:w-12 lg:h-12 bg-blue-500/10 border border-blue-500/20 rounded-lg flex items-center justify-center text-lg lg:text-xl hover:bg-blue-500/20 hover:border-blue-500/40 hover:-translate-y-1 transition-all duration-300"
+                href="mailto:contato@sparklehavencleaning.com" 
+                className="w-10 h-10 lg:w-12 lg:h-12 bg-blue-500/10 ring-1 ring-blue-500/20 rounded-lg flex items-center justify-center text-lg lg:text-xl hover:bg-blue-500/20 hover:ring-blue-500/40 hover:-translate-y-1 transition-all duration-300"
                 aria-label="Email"
               >
                 📧
               </a>
               <a 
                 href="#" 
-                className="w-10 h-10 lg:w-12 lg:h-12 bg-blue-500/10 border border-blue-500/20 rounded-lg flex items-center justify-center text-lg lg:text-xl hover:bg-blue-500/20 hover:border-blue-500/40 hover:-translate-y-1 transition-all duration-300"
-                aria-label="LinkedIn"
+                className="w-10 h-10 lg:w-12 lg:h-12 bg-blue-500/10 ring-1 ring-blue-500/20 rounded-lg flex items-center justify-center text-lg lg:text-xl hover:bg-blue-500/20 hover:ring-blue-500/40 hover:-translate-y-1 transition-all duration-300"
+                aria-label="Facebook"
               >
-                💼
+                👍
               </a>
               <a 
                 href="#" 
-                className="w-10 h-10 lg:w-12 lg:h-12 bg-blue-500/10 border border-blue-500/20 rounded-lg flex items-center justify-center text-lg lg:text-xl hover:bg-blue-500/20 hover:border-blue-500/40 hover:-translate-y-1 transition-all duration-300"
+                className="w-10 h-10 lg:w-12 lg:h-12 bg-blue-500/10 ring-1 ring-blue-500/20 rounded-lg flex items-center justify-center text-lg lg:text-xl hover:bg-blue-500/20 hover:ring-blue-500/40 hover:-translate-y-1 transition-all duration-300"
                 aria-label="Instagram"
               >
                 📸
@@ -85,26 +84,42 @@ const Footer = () => {
             <ul className="space-y-3 lg:space-y-4">
               <li>
                 <a 
-                  href="#data-engineering" 
+                  href="#residential" 
                   className="text-gray-400 hover:text-blue-400 text-sm lg:text-base transition-colors duration-300 block"
                 >
-                  Engenharia de Dados
+                  Limpeza Residencial
                 </a>
               </li>
               <li>
                 <a 
-                  href="#bi-architecture" 
+                  href="#commercial" 
                   className="text-gray-400 hover:text-blue-400 text-sm lg:text-base transition-colors duration-300 block"
                 >
-                  Power BI
+                  Limpeza Comercial
                 </a>
               </li>
               <li>
                 <a 
-                  href="#web-development" 
+                  href="#office" 
                   className="text-gray-400 hover:text-blue-400 text-sm lg:text-base transition-colors duration-300 block"
                 >
-                  Desenvolvimento Web
+                  Limpeza de Escritórios
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="#move" 
+                  className="text-gray-400 hover:text-blue-400 text-sm lg:text-base transition-colors duration-300 block"
+                >
+                  Move In/Move Out
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="#trash" 
+                  className="text-gray-400 hover:text-blue-400 text-sm lg:text-base transition-colors duration-300 block"
+                >
+                  Remoção de Lixo
                 </a>
               </li>
             </ul>
@@ -121,39 +136,33 @@ const Footer = () => {
                   href="#about" 
                   className="text-gray-400 hover:text-blue-400 text-sm lg:text-base transition-colors duration-300 block"
                 >
-                  Sobre
+                  Sobre Nós
                 </a>
               </li>
               <li>
                 <a 
-                  href="https://github.com/Claudio-Silva-Bispo" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
+                  href="#testimonials" 
                   className="text-gray-400 hover:text-blue-400 text-sm lg:text-base transition-colors duration-300 block"
                 >
-                  Portfolio
+                  Depoimentos
                 </a>
               </li>
              
               <li>
                 <a 
-                  href="https://www.linkedin.com/in/claudiosbispo/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
+                  href="#areas" 
                   className="text-gray-400 hover:text-blue-400 text-sm lg:text-base transition-colors duration-300 block"
                 >
-                  Linkedin
+                  Áreas Atendidas
                 </a>
               </li>
 
               <li>
                 <a 
-                  href="https://github.com/Claudio-Silva-Bispo" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
+                  href="#faq" 
                   className="text-gray-400 hover:text-blue-400 text-sm lg:text-base transition-colors duration-300 block"
                 >
-                  GitHub
+                  Perguntas Frequentes
                 </a>
               </li>
             </ul>
@@ -172,24 +181,24 @@ const Footer = () => {
               <div>
                 <div className="text-xs lg:text-sm text-gray-400 mb-1">Email</div>
                 <a 
-                  href="mailto:contato@techdatasolutions.com.br" 
+                  href="mailto:contato@sparklehavencleaning.com" 
                   className="text-gray-200 text-sm lg:text-base hover:text-blue-400 transition-colors duration-300 break-all"
                 >
-                  bctechsolutionsadvisory@gmail.com
+                  contato@sparklehavencleaning.com
                 </a>
               </div>
             </div>
             
-            {/* WhatsApp */}
+            {/* Phone */}
             <div className="flex items-start gap-4">
               <span className="text-xl lg:text-2xl mt-1">📱</span>
               <div>
-                <div className="text-xs lg:text-sm text-gray-400 mb-1">WhatsApp</div>
+                <div className="text-xs lg:text-sm text-gray-400 mb-1">Telefone</div>
                 <a 
-                  href="https://wa.me/5511999999999" 
+                  href="tel:+12065551234" 
                   className="text-gray-200 text-sm lg:text-base hover:text-blue-400 transition-colors duration-300"
                 >
-                  (11) 99999-9999
+                  (425) 476-5411
                 </a>
               </div>
             </div>
@@ -200,7 +209,7 @@ const Footer = () => {
               <div>
                 <div className="text-xs lg:text-sm text-gray-400 mb-1">Localização</div>
                 <div className="text-gray-200 text-sm lg:text-base">
-                  São Paulo, SP
+                  Seattle, WA
                 </div>
               </div>
             </div>
@@ -208,10 +217,10 @@ const Footer = () => {
         </div>
 
         {/* Footer Bottom */}
-        <div className="pt-6 lg:pt-8 border-t border-white/10">
+        <div className="pt-6 lg:pt-8 ring-t ring-white/10">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 lg:gap-6">
             <div className="text-gray-400 text-sm lg:text-base text-center sm:text-left">
-              © 2025 Bc Tech Solutions & Advisory. Todos os direitos reservados.
+              © 2025 Sparkle Haven Cleaning Service. Todos os direitos reservados.
             </div>
             <div className="flex flex-wrap justify-center sm:justify-end gap-4 lg:gap-8">
               <a 
