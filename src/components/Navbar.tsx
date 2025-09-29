@@ -89,10 +89,10 @@ export default function Navbar() {
             {/* Botão de Contato */}
             <div className="flex items-center">
               <a 
-                href="tel:+12065551234" 
+                href="tel:+14254765411" 
                 className="bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-blue-500/25 flex items-center gap-2"
               >
-                📞 (206) 555-1234
+                📞 (425) 476-5411
               </a>
             </div>
           </div>
@@ -170,7 +170,7 @@ export default function Navbar() {
               {/* Botão de contato no mobile */}
               <div className="pt-4">
                 <a 
-                  href="tel:+12065551234" 
+                  href="tel:+14254765411" 
                   className="flex items-center justify-center w-full px-4 py-4 bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white rounded-lg transition-all font-semibold shadow-lg"
                 >
                   <span className="mr-2">📞</span>
