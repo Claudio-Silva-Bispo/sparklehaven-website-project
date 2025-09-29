@@ -34,7 +34,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
       <div className="fixed bottom-6 right-6 flex flex-col gap-3 z-50">
       {/* Botão WhatsApp */}
       <a
-        href="https://wa.me/+14255886654"
+        href="https://wa.me/+14254765411"
         target="_blank"
         rel="noopener noreferrer"
         className="p-3 rounded-full bg-green-500 text-white shadow-lg hover:bg-green-400 transition"
