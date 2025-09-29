@@ -66,7 +66,7 @@ export default function Navbar() {
                 <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center text-2xl">
                   ✨
                 </div>
-                <span className="text-xl font-bold text-blue-400">Sparkle Haven</span>
+                <span className="text-xl font-bold text-blue-400">SparklHaven</span>
               </button>
             </div>
             
@@ -116,7 +116,7 @@ export default function Navbar() {
               <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center text-xl">
                 ✨
               </div>
-              <span className="text-lg font-bold text-blue-400">Sparkle Haven</span>
+              <span className="text-lg font-bold text-blue-400">SparklHaven</span>
             </button>
             
             {/* Botão Hamburger */}

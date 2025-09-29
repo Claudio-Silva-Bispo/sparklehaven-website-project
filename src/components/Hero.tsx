@@ -40,7 +40,7 @@ const Hero: React.FC = () => {
           </div>
         </div>
 
-        <div className="container mx-auto px-5 relative z-10">
+        <div className="container mx-auto px-5 relative z-10 pt-5">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             {/* Hero Text */}
             <div className="animate-fadeInUp pt-3 xl:pt-0">
@@ -48,8 +48,8 @@ const Hero: React.FC = () => {
                 <span className='p-3'>🏠</span> <p className='p-3'>Empresa Familiar • Seattle, WA</p>
               </div>
               
-              <h1 className="text-2xl md:text-5xl lg:text-4xl xl:text-5xl font-extrabold leading-tight bg-gradient-to-r from-white to-blue-400 bg-clip-text text-transparent">
-                Limpeza Profissional para seu Lar e seu Negócio
+              <h1 className="text-3xl md:text-5xl lg:text-4xl xl:text-5xl font-extrabold leading-tight bg-gradient-to-r from-white to-blue-400 bg-clip-text text-transparent">
+                Limpeza Profissional para seu LAR e seu NEGÓCIO
               </h1>
               
               <p className="md:text-xl text-gray-400 mb-3 leading-relaxed pt-3">

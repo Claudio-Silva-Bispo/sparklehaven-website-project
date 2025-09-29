@@ -95,7 +95,7 @@ const About = () => {
               </div>
 
               <div className="text-blue-400 font-medium mb-4">
-                Sparkle Haven Cleaning Service
+                SparklHaven Cleaning Service
               </div>
               <div className="text-gray-400 text-sm">Seattle, WA • Desde 2015</div>
             </div>
@@ -148,7 +148,7 @@ const About = () => {
         </div>
 
         {/* Why Choose Us */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 text-center">
           <div className="bg-white/5 backdrop-blur-sm ring-1 ring-white/10 rounded-xl p-6 hover:bg-white/10 transition-all duration-300">
             <div className="text-4xl mb-4">🏡</div>
             <h3 className="text-xl font-bold text-white mb-3">Negócio Familiar</h3>

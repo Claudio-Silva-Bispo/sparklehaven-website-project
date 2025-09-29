@@ -28,7 +28,7 @@ const Footer = () => {
                 ✨
               </div>
               <div className="text-xl lg:text-2xl font-bold text-blue-400">
-                Sparkle Haven Cleaning Service
+                SparklHaven Cleaning Service
               </div>
             </div>
             
@@ -53,7 +53,7 @@ const Footer = () => {
                 📱
               </a>
               <a 
-                href="mailto:contato@sparklehavencleaning.com" 
+                href="mailto:contato@sparklhavencleaning.com" 
                 className="w-10 h-10 lg:w-12 lg:h-12 bg-blue-500/10 ring-1 ring-blue-500/20 rounded-lg flex items-center justify-center text-lg lg:text-xl hover:bg-blue-500/20 hover:ring-blue-500/40 hover:-translate-y-1 transition-all duration-300"
                 aria-label="Email"
               >
@@ -181,10 +181,10 @@ const Footer = () => {
               <div>
                 <div className="text-xs lg:text-sm text-gray-400 mb-1">Email</div>
                 <a 
-                  href="mailto:contato@sparklehavencleaning.com" 
+                  href="mailto:contato@sparklhavencleaning.com" 
                   className="text-gray-200 text-sm lg:text-base hover:text-blue-400 transition-colors duration-300 break-all"
                 >
-                  contato@sparklehavencleaning.com
+                  contato@sparklhavencleaning.com
                 </a>
               </div>
             </div>
@@ -220,7 +220,7 @@ const Footer = () => {
         <div className="pt-6 lg:pt-8 ring-t ring-white/10">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 lg:gap-6">
             <div className="text-gray-400 text-sm lg:text-base text-center sm:text-left">
-              © 2025 Sparkle Haven Cleaning Service. Todos os direitos reservados.
+              © 2025 SparklHaven Cleaning Service. Todos os direitos reservados.
             </div>
             <div className="flex flex-wrap justify-center sm:justify-end gap-4 lg:gap-8">
               <a 
