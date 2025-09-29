@@ -5,8 +5,7 @@ import { useRouter, usePathname } from 'next/navigation';
 npm install @fortawesome/react-fontawesome @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons
  */
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faHome, faPhone, faCalendarAlt, faUsers, faStar, faShareAlt, faEnvelope,faUserTie,faDatabase,faChartBar,faLaptopCode,faQuestionCircle,faChartPie,faGlobe } from '@fortawesome/free-solid-svg-icons';
-import Image from 'next/image';
+import { faBars, faHome, faPhone, faCalendarAlt, faUsers, faStar, faEnvelope,faUserTie, faSearch, faFileWaveform } from '@fortawesome/free-solid-svg-icons';
 
 export default function Navbar() {
   const [isHeroVisible, setIsHeroVisible] = useState(true);
@@ -21,8 +20,8 @@ export default function Navbar() {
     { item: 'Início', path: '/', icon: faHome, type: 'page' },
     { item: 'Sobre', path: '#about', icon: faUserTie, type: 'section' },
     { item: 'Contato', path: '#contact', icon: faEnvelope, type: 'section' },
-    { item: 'Serviços', path: '#service', icon: faDatabase, type: 'section' },
-    { item: 'Orçamento', path: '#orcamento', icon: faDatabase, type: 'section' },
+    { item: 'Serviços', path: '#service', icon: faSearch, type: 'section' },
+    { item: 'Orçamento', path: '#orcamento', icon: faFileWaveform, type: 'section' },
     { item: 'Review', path: '#review', icon: faStar, type: 'section' },
   ];
 
@@ -160,7 +159,7 @@ export default function Navbar() {
               onClick={() => handleNavigation('#contact', 'section')} 
               className={`px-3 py-2 text-sm hover:bg-blue-500 hover:text-white rounded-md flex items-center space-x-2 transition-colors ${activeHash === '#FormQuote' ? 'bg-[#2C394C] text-white' : 'text-gray-700'}`}
             >
-              <FontAwesomeIcon icon={faCalendarAlt} className="w-4 h-4" />
+              <FontAwesomeIcon icon={faFileWaveform} className="w-4 h-4" />
               <span>Orçamento</span>
             </button>
 
@@ -168,7 +167,7 @@ export default function Navbar() {
               onClick={() => handleNavigation('WebDevelopment', 'page')} 
               className={`px-3 py-2 text-sm hover:bg-blue-500 hover:text-white rounded-md flex items-center space-x-2 transition-colors ${activeHash === '#Service' ? 'bg-[#2C394C] text-white' : 'text-gray-700'}`}
             >
-              <FontAwesomeIcon icon={faGlobe} className="w-4 h-4" />
+              <FontAwesomeIcon icon={faSearch} className="w-4 h-4" />
               <span>Contato</span>
             </button>
 
@@ -176,7 +175,7 @@ export default function Navbar() {
               onClick={() => handleNavigation('DocumentationTrainingSection', 'page')} 
               className={`px-3 py-2 text-sm hover:bg-blue-500 hover:text-white rounded-md flex items-center space-x-2 transition-colors ${activeHash === '#Service' ? 'bg-[#2C394C] text-white' : 'text-gray-700'}`}
             >
-              <FontAwesomeIcon icon={faQuestionCircle} className="w-4 h-4" />
+              <FontAwesomeIcon icon={faSearch} className="w-4 h-4" />
               <span>Serviços</span>
             </button>
 
