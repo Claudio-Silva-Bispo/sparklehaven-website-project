@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+.border {
+  margin: 0;
+  padding: 0; 
+}
+
+body {
+    font-family: 'Radley', sans-serif;
+    /*max-width: 1440px;*/
+    margin: 0 auto;
+    width: 100%;
+  }
