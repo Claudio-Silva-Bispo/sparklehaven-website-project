@@ -219,7 +219,9 @@ const CompleteServicesPage = () => {
                       onClick={() => scrollToSection('contact')}
                       className="mt-6 bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-blue-500/25 flex items-center gap-2 min-w-full justify-center"
                     >
-                      📞 {t('services.quote')}
+                      <a href="tel:+14254765411">
+                        📞 {t('services.quote')}
+                      </a>
                     </button>
                   </div>
 
@@ -344,7 +346,9 @@ const CompleteServicesPage = () => {
               onClick={() => scrollToSection('contact')}
               className="bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-blue-500/25"
             >
-              📞 {t('hero.cta')}
+              <a href="tel:+14254765411">
+                📞 {t('services.quote')}
+              </a>
             </button>
           </div>
         </div>

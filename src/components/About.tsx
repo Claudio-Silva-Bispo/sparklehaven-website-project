@@ -194,7 +194,7 @@ const About = () => {
                   onClick={() => scrollToSection('contact')}
                   className="bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white px-4 py-4 lg:px-8 lg:py-4 rounded-lg font-semibold md:text-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-blue-500/25 flex items-center w-full justify-center"
                 >
-                  <a href="tel:+14255886654">
+                  <a href="tel:+14254765411">
                     📞 {t('hero.cta')}
                   </a>
                 </button>
