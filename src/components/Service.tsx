@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { useTheme } from '../contexts/ThemeContext';
 
 const CompleteServicesPage = () => {
+  const { isDarkMode } = useTheme();
   const [currentImageIndexes, setCurrentImageIndexes] = useState<{[key: number]: number}>({
     0: 0,
     1: 0,
@@ -8,7 +10,6 @@ const CompleteServicesPage = () => {
     3: 0,
     4: 0
   });
-
 
   const mainServices = [
     {
@@ -48,7 +49,7 @@ const CompleteServicesPage = () => {
       color: "from-green-500 to-teal-500",
       borderColor: "ring-green-400/40",
       images: [
-        "/images/commercial-2.jpg",
+        "/images/commercial-1.jpg",
         "/images/commercial-2.jpg",
         "/images/commercial-3.jpg"
       ]
@@ -119,7 +120,6 @@ const CompleteServicesPage = () => {
     }
   ];
 
-  // Carousel automático para cada serviço
   useEffect(() => {
     const intervals = mainServices.map((_, serviceIndex) => {
       return setInterval(() => {
@@ -149,20 +149,36 @@ const CompleteServicesPage = () => {
   };
 
   return (
-    <div className="bg-gradient-to-br from-blue-50 via-sky-100 to-indigo-50 min-h-screen" id='services'>
-
+    <div 
+      className={`min-h-screen transition-colors duration-500 ${
+        isDarkMode 
+          ? 'bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900' 
+          : 'bg-gradient-to-br from-blue-50 via-sky-100 to-indigo-50'
+      }`} 
+      id='services'
+    >
       {/* Main Services */}
       <section className="py-20 lg:py-32">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 lg:mb-20">
-            <div className="inline-flex items-center gap-2 bg-blue-600/10 ring-1 ring-blue-600/30 rounded-full px-4 py-2 text-sm text-blue-900 font-medium mb-6">
+            <div className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium mb-6 ${
+              isDarkMode 
+                ? 'bg-blue-500/15 ring-1 ring-blue-500/30 text-blue-400' 
+                : 'bg-blue-600/10 ring-1 ring-blue-600/30 text-blue-900'
+            }`}>
               <span>✨</span>
               <span>Nossos Serviços</span>
             </div>
-            <h2 className="text-4xl lg:text-6xl font-extrabold mb-6 bg-gradient-to-r from-gray-800 via-blue-900 to-purple-900 bg-clip-text text-transparent text-start lg:text-center pb-5">
+            <h2 className={`text-4xl lg:text-6xl font-extrabold mb-6 bg-clip-text text-transparent text-start lg:text-center pb-5 ${
+              isDarkMode 
+                ? 'bg-gradient-to-r from-white via-blue-400 to-purple-400' 
+                : 'bg-gradient-to-r from-gray-800 via-blue-900 to-purple-900'
+            }`}>
               Cuidamos do que é mais importante: sua Família e seu Negócio
             </h2>
-            <p className="text-xl text-gray-700 max-w-3xl mx-auto text-start lg:text-center">
+            <p className={`text-xl max-w-3xl mx-auto text-start lg:text-center ${
+              isDarkMode ? 'text-gray-400' : 'text-gray-700'
+            }`}>
               Do residencial ao comercial, cuidamos de cada detalhe com profissionalismo e dedicação
             </p>
           </div>
@@ -206,7 +222,7 @@ const CompleteServicesPage = () => {
                   </div>
 
                   {/* Right Side - Image Carousel */}
-                 <div className={index % 2 === 0 ? 'order-2' : 'order-2 lg:order-1'}>
+                  <div className={index % 2 === 0 ? 'order-2' : 'order-2 lg:order-1'}>
                     <div className="relative bg-gray-900/50 ring-1 ring-white/10 rounded-2xl overflow-hidden h-64 sm:h-80 md:h-96 lg:h-[600px]">
                       {service.images.map((img, imgIdx) => (
                         <div
@@ -220,7 +236,6 @@ const CompleteServicesPage = () => {
                             alt={`${service.title} - Foto ${imgIdx + 1}`}
                             className="w-full h-full object-cover"
                             onError={(e) => {
-                              // Se a imagem não carregar, mostra o placeholder
                               e.currentTarget.style.display = 'none';
                               const placeholder = e.currentTarget.nextElementSibling as HTMLElement;
                               if (placeholder) placeholder.style.display = 'flex';
@@ -236,7 +251,6 @@ const CompleteServicesPage = () => {
                         </div>
                       ))}
 
-                      {/* Indicadores de navegação */}
                       <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2 z-10">
                         {[0, 1, 2].map((dotIndex) => (
                           <button
@@ -264,24 +278,36 @@ const CompleteServicesPage = () => {
       </section>
 
       {/* Workflow Process */}
-      <section className="py-20 bg-white/30 backdrop-blur-sm">
+      <section className={`py-20 backdrop-blur-sm ${
+        isDarkMode ? 'bg-white/5' : 'bg-white/30'
+      }`}>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="lg:text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-blue-600/10 ring-1 ring-blue-600/30 rounded-full px-4 py-2 text-sm text-blue-900 font-medium mb-6">
+            <div className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium mb-6 ${
+              isDarkMode 
+                ? 'bg-blue-500/15 ring-1 ring-blue-500/30 text-blue-400' 
+                : 'bg-blue-600/10 ring-1 ring-blue-600/30 text-blue-900'
+            }`}>
               <span>🔄</span>
               <span>Como Funciona</span>
             </div>
-            <h2 className="text-4xl lg:text-6xl font-extrabold mb-6 bg-gradient-to-r from-gray-800 via-blue-900 to-purple-900 bg-clip-text text-transparent">
+            <h2 className={`text-4xl lg:text-6xl font-extrabold mb-6 bg-clip-text text-transparent ${
+              isDarkMode 
+                ? 'bg-gradient-to-r from-white via-blue-400 to-purple-400' 
+                : 'bg-gradient-to-r from-gray-800 via-blue-900 to-purple-900'
+            }`}>
               Processo Simples e Rápido
             </h2>
-            <p className="text-xl text-gray-700">Em apenas 5 passos seu espaço estará impecável</p>
+            <p className={`text-xl ${isDarkMode ? 'text-gray-400' : 'text-gray-700'}`}>
+              Em apenas 5 passos seu espaço estará impecável
+            </p>
           </div>
 
           <div className="max-w-8xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-5 gap-6">
               {workflow.map((item, index) => (
                 <div key={index} className="relative">
-                  <div className="bg-gradient-to-br from-blue-600 to-blue-900 ring-1 ring-blue-400/30 rounded-2xl p-6 text-center hover:scale-105 hover:from-gray-700 hover:to-gray-800 transition-all duration-300 shadow-lg">
+                  <div className="bg-gradient-to-br from-gray-800 to-gray-900 ring-1 ring-blue-400/30 rounded-2xl p-6 text-center hover:scale-105 hover:from-gray-700 hover:to-gray-800 transition-all duration-300 shadow-lg">
                     <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4 text-white">
                       {item.step}
                     </div>
@@ -289,7 +315,9 @@ const CompleteServicesPage = () => {
                     <p className="text-sm text-gray-300">{item.desc}</p>
                   </div>
                   {index < workflow.length - 1 && (
-                    <div className="hidden lg:block absolute -right-3 top-1/2 -translate-y-1/2 text-blue-600 text-2xl">
+                    <div className={`hidden lg:block absolute -right-3 top-1/2 -translate-y-1/2 text-2xl ${
+                      isDarkMode ? 'text-blue-500' : 'text-blue-600'
+                    }`}>
                       →
                     </div>
                   )}
@@ -303,7 +331,7 @@ const CompleteServicesPage = () => {
       {/* CTA Section */}
       <section className="py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-gradient-to-br from-blue-600 to-blue-900 ring-1 ring-blue-400/30 rounded-3xl p-12 text-center shadow-2xl">
+          <div className="bg-gradient-to-br from-gray-800 to-gray-900 ring-1 ring-blue-400/30 rounded-3xl p-12 text-center shadow-2xl">
             <h2 className="text-3xl lg:text-5xl font-bold mb-6 text-white">
               Pronto para ter um espaço impecável?
             </h2>

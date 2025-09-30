@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { useTheme } from '../contexts/ThemeContext';
 
 const Footer = () => {
+  const { isDarkMode } = useTheme();
   const [email, setEmail] = useState('');
 
   const handleNewsletterSubmit = () => {
@@ -11,12 +13,20 @@ const Footer = () => {
   };
 
   return (
-    <footer className="relative overflow-hidden bg-gradient-to-br from-blue-50 via-sky-100 to-blue-100">
+    <footer className={`relative overflow-hidden transition-colors duration-500 ${
+      isDarkMode 
+        ? 'bg-gradient-to-br from-gray-800 via-gray-900 to-gray-900' 
+        : 'bg-gradient-to-br from-blue-50 via-sky-100 to-blue-100'
+    }`}>
       {/* Background overlay */}
       <div className="absolute inset-0">
-        <div className="absolute top-0 left-0 w-full h-full opacity-20">
-          <div className="absolute top-20 left-20 w-96 h-96 bg-blue-200 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-20 right-20 w-64 h-64 bg-sky-200 rounded-full blur-3xl"></div>
+        <div className={`absolute top-0 left-0 w-full h-full ${isDarkMode ? 'opacity-10' : 'opacity-20'}`}>
+          <div className={`absolute top-20 left-20 w-96 h-96 rounded-full blur-3xl ${
+            isDarkMode ? 'bg-blue-500/20' : 'bg-blue-200'
+          }`}></div>
+          <div className={`absolute bottom-20 right-20 w-64 h-64 rounded-full blur-3xl ${
+            isDarkMode ? 'bg-blue-500/15' : 'bg-sky-200'
+          }`}></div>
         </div>
       </div>
       
@@ -32,18 +42,26 @@ const Footer = () => {
               <div className="w-24 h-24 lg:w-16 lg:h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center text-lg lg:text-xl font-bold text-white shadow-lg">
                 ✨
               </div>
-              <div className="text-xl lg:text-2xl font-bold bg-gradient-to-r from-gray-800 via-blue-900 to-blue-800 bg-clip-text text-transparent">
+              <div className={`text-xl lg:text-2xl font-bold bg-clip-text text-transparent ${
+                isDarkMode 
+                  ? 'bg-gradient-to-r from-white to-blue-400' 
+                  : 'bg-gradient-to-r from-gray-800 via-blue-900 to-blue-800'
+              }`}>
                 SparklHaven Cleaning Service
               </div>
             </div>
             
             {/* Tagline */}
-            <p className="text-gray-700 mb-6 text-base lg:text-lg font-medium">
+            <p className={`mb-6 text-base lg:text-lg font-medium ${
+              isDarkMode ? 'text-gray-300' : 'text-gray-700'
+            }`}>
               Transformando casas em lares impecáveis na região de Seattle
             </p>
             
             {/* Description */}
-            <p className="text-gray-600 text-sm lg:text-base leading-relaxed mb-6 max-w-md">
+            <p className={`text-sm lg:text-base leading-relaxed mb-6 max-w-md ${
+              isDarkMode ? 'text-gray-400' : 'text-gray-600'
+            }`}>
               Empresa familiar especializada em limpeza residencial, comercial e de escritórios. 
               Atendemos com carinho e profissionalismo desde 2015.
             </p>
@@ -51,29 +69,45 @@ const Footer = () => {
             {/* Social Links */}
             <div className="flex gap-3 lg:gap-4">
               <a 
-                href="https://wa.me/12065551234" 
-                className="w-10 h-10 lg:w-12 lg:h-12 bg-blue-600/10 ring-1 ring-blue-600/30 rounded-lg flex items-center justify-center text-lg lg:text-xl hover:bg-blue-600/20 hover:ring-blue-600/50 hover:-translate-y-1 transition-all duration-300"
+                href="https://wa.me/14254765411" 
+                className={`w-10 h-10 lg:w-12 lg:h-12 rounded-lg flex items-center justify-center text-lg lg:text-xl hover:-translate-y-1 transition-all duration-300 ${
+                  isDarkMode 
+                    ? 'bg-blue-500/10 ring-1 ring-blue-500/20 hover:bg-blue-500/20 hover:ring-blue-500/40' 
+                    : 'bg-blue-600/10 ring-1 ring-blue-600/30 hover:bg-blue-600/20 hover:ring-blue-600/50'
+                }`}
                 aria-label="WhatsApp"
               >
                 📱
               </a>
               <a 
                 href="mailto:contato@sparklhavencleaning.com" 
-                className="w-10 h-10 lg:w-12 lg:h-12 bg-blue-600/10 ring-1 ring-blue-600/30 rounded-lg flex items-center justify-center text-lg lg:text-xl hover:bg-blue-600/20 hover:ring-blue-600/50 hover:-translate-y-1 transition-all duration-300"
+                className={`w-10 h-10 lg:w-12 lg:h-12 rounded-lg flex items-center justify-center text-lg lg:text-xl hover:-translate-y-1 transition-all duration-300 ${
+                  isDarkMode 
+                    ? 'bg-blue-500/10 ring-1 ring-blue-500/20 hover:bg-blue-500/20 hover:ring-blue-500/40' 
+                    : 'bg-blue-600/10 ring-1 ring-blue-600/30 hover:bg-blue-600/20 hover:ring-blue-600/50'
+                }`}
                 aria-label="Email"
               >
                 📧
               </a>
               <a 
                 href="#" 
-                className="w-10 h-10 lg:w-12 lg:h-12 bg-blue-600/10 ring-1 ring-blue-600/30 rounded-lg flex items-center justify-center text-lg lg:text-xl hover:bg-blue-600/20 hover:ring-blue-600/50 hover:-translate-y-1 transition-all duration-300"
+                className={`w-10 h-10 lg:w-12 lg:h-12 rounded-lg flex items-center justify-center text-lg lg:text-xl hover:-translate-y-1 transition-all duration-300 ${
+                  isDarkMode 
+                    ? 'bg-blue-500/10 ring-1 ring-blue-500/20 hover:bg-blue-500/20 hover:ring-blue-500/40' 
+                    : 'bg-blue-600/10 ring-1 ring-blue-600/30 hover:bg-blue-600/20 hover:ring-blue-600/50'
+                }`}
                 aria-label="Facebook"
               >
                 👍
               </a>
               <a 
                 href="#" 
-                className="w-10 h-10 lg:w-12 lg:h-12 bg-blue-600/10 ring-1 ring-blue-600/30 rounded-lg flex items-center justify-center text-lg lg:text-xl hover:bg-blue-600/20 hover:ring-blue-600/50 hover:-translate-y-1 transition-all duration-300"
+                className={`w-10 h-10 lg:w-12 lg:h-12 rounded-lg flex items-center justify-center text-lg lg:text-xl hover:-translate-y-1 transition-all duration-300 ${
+                  isDarkMode 
+                    ? 'bg-blue-500/10 ring-1 ring-blue-500/20 hover:bg-blue-500/20 hover:ring-blue-500/40' 
+                    : 'bg-blue-600/10 ring-1 ring-blue-600/30 hover:bg-blue-600/20 hover:ring-blue-600/50'
+                }`}
                 aria-label="Instagram"
               >
                 📸
@@ -83,14 +117,20 @@ const Footer = () => {
 
           {/* Coluna 2 - Serviços */}
           <div>
-            <h3 className="text-lg lg:text-xl font-bold text-gray-800 mb-6">
+            <h3 className={`text-lg lg:text-xl font-bold mb-6 ${
+              isDarkMode ? 'text-gray-200' : 'text-gray-800'
+            }`}>
               Serviços
             </h3>
             <ul className="space-y-3 lg:space-y-4">
               <li>
                 <a 
                   href="#residential" 
-                  className="text-gray-600 hover:text-blue-700 text-sm lg:text-base transition-colors duration-300 block"
+                  className={`text-sm lg:text-base transition-colors duration-300 block ${
+                    isDarkMode 
+                      ? 'text-gray-400 hover:text-blue-400' 
+                      : 'text-gray-600 hover:text-blue-700'
+                  }`}
                 >
                   Limpeza Residencial
                 </a>
@@ -98,7 +138,11 @@ const Footer = () => {
               <li>
                 <a 
                   href="#commercial" 
-                  className="text-gray-600 hover:text-blue-700 text-sm lg:text-base transition-colors duration-300 block"
+                  className={`text-sm lg:text-base transition-colors duration-300 block ${
+                    isDarkMode 
+                      ? 'text-gray-400 hover:text-blue-400' 
+                      : 'text-gray-600 hover:text-blue-700'
+                  }`}
                 >
                   Limpeza Comercial
                 </a>
@@ -106,7 +150,11 @@ const Footer = () => {
               <li>
                 <a 
                   href="#office" 
-                  className="text-gray-600 hover:text-blue-700 text-sm lg:text-base transition-colors duration-300 block"
+                  className={`text-sm lg:text-base transition-colors duration-300 block ${
+                    isDarkMode 
+                      ? 'text-gray-400 hover:text-blue-400' 
+                      : 'text-gray-600 hover:text-blue-700'
+                  }`}
                 >
                   Limpeza de Escritórios
                 </a>
@@ -114,7 +162,11 @@ const Footer = () => {
               <li>
                 <a 
                   href="#move" 
-                  className="text-gray-600 hover:text-blue-700 text-sm lg:text-base transition-colors duration-300 block"
+                  className={`text-sm lg:text-base transition-colors duration-300 block ${
+                    isDarkMode 
+                      ? 'text-gray-400 hover:text-blue-400' 
+                      : 'text-gray-600 hover:text-blue-700'
+                  }`}
                 >
                   Move In/Move Out
                 </a>
@@ -122,7 +174,11 @@ const Footer = () => {
               <li>
                 <a 
                   href="#trash" 
-                  className="text-gray-600 hover:text-blue-700 text-sm lg:text-base transition-colors duration-300 block"
+                  className={`text-sm lg:text-base transition-colors duration-300 block ${
+                    isDarkMode 
+                      ? 'text-gray-400 hover:text-blue-400' 
+                      : 'text-gray-600 hover:text-blue-700'
+                  }`}
                 >
                   Remoção de Lixo
                 </a>
@@ -132,14 +188,20 @@ const Footer = () => {
 
           {/* Coluna 3 - Empresa */}
           <div>
-            <h3 className="text-lg lg:text-xl font-bold text-gray-800 mb-6">
+            <h3 className={`text-lg lg:text-xl font-bold mb-6 ${
+              isDarkMode ? 'text-gray-200' : 'text-gray-800'
+            }`}>
               Empresa
             </h3>
             <ul className="space-y-3 lg:space-y-4">
               <li>
                 <a 
                   href="#about" 
-                  className="text-gray-600 hover:text-blue-700 text-sm lg:text-base transition-colors duration-300 block"
+                  className={`text-sm lg:text-base transition-colors duration-300 block ${
+                    isDarkMode 
+                      ? 'text-gray-400 hover:text-blue-400' 
+                      : 'text-gray-600 hover:text-blue-700'
+                  }`}
                 >
                   Sobre Nós
                 </a>
@@ -147,7 +209,11 @@ const Footer = () => {
               <li>
                 <a 
                   href="#testimonials" 
-                  className="text-gray-600 hover:text-blue-700 text-sm lg:text-base transition-colors duration-300 block"
+                  className={`text-sm lg:text-base transition-colors duration-300 block ${
+                    isDarkMode 
+                      ? 'text-gray-400 hover:text-blue-400' 
+                      : 'text-gray-600 hover:text-blue-700'
+                  }`}
                 >
                   Depoimentos
                 </a>
@@ -156,7 +222,11 @@ const Footer = () => {
               <li>
                 <a 
                   href="#areas" 
-                  className="text-gray-600 hover:text-blue-700 text-sm lg:text-base transition-colors duration-300 block"
+                  className={`text-sm lg:text-base transition-colors duration-300 block ${
+                    isDarkMode 
+                      ? 'text-gray-400 hover:text-blue-400' 
+                      : 'text-gray-600 hover:text-blue-700'
+                  }`}
                 >
                   Áreas Atendidas
                 </a>
@@ -165,7 +235,11 @@ const Footer = () => {
               <li>
                 <a 
                   href="#faq" 
-                  className="text-gray-600 hover:text-blue-700 text-sm lg:text-base transition-colors duration-300 block"
+                  className={`text-sm lg:text-base transition-colors duration-300 block ${
+                    isDarkMode 
+                      ? 'text-gray-400 hover:text-blue-400' 
+                      : 'text-gray-600 hover:text-blue-700'
+                  }`}
                 >
                   Perguntas Frequentes
                 </a>
@@ -176,7 +250,9 @@ const Footer = () => {
 
         {/* Coluna 4 - Contato (Full width on mobile) */}
         <div className="mb-12 lg:mb-16">
-          <h3 className="text-lg lg:text-xl font-bold text-gray-800 mb-6">
+          <h3 className={`text-lg lg:text-xl font-bold mb-6 ${
+            isDarkMode ? 'text-gray-200' : 'text-gray-800'
+          }`}>
             Contato
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
@@ -184,10 +260,16 @@ const Footer = () => {
             <div className="flex items-start gap-4">
               <span className="text-xl lg:text-2xl mt-1">📧</span>
               <div>
-                <div className="text-xs lg:text-sm text-gray-600 mb-1">Email</div>
+                <div className={`text-xs lg:text-sm mb-1 ${
+                  isDarkMode ? 'text-gray-400' : 'text-gray-600'
+                }`}>Email</div>
                 <a 
                   href="mailto:contato@sparklhavencleaning.com" 
-                  className="text-gray-800 text-sm lg:text-base hover:text-blue-700 transition-colors duration-300 break-all"
+                  className={`text-sm lg:text-base transition-colors duration-300 break-all ${
+                    isDarkMode 
+                      ? 'text-gray-200 hover:text-blue-400' 
+                      : 'text-gray-800 hover:text-blue-700'
+                  }`}
                 >
                   contato@sparklhavencleaning.com
                 </a>
@@ -198,10 +280,16 @@ const Footer = () => {
             <div className="flex items-start gap-4">
               <span className="text-xl lg:text-2xl mt-1">📱</span>
               <div>
-                <div className="text-xs lg:text-sm text-gray-600 mb-1">Telefone</div>
+                <div className={`text-xs lg:text-sm mb-1 ${
+                  isDarkMode ? 'text-gray-400' : 'text-gray-600'
+                }`}>Telefone</div>
                 <a 
                   href="tel:+14254765411" 
-                  className="text-gray-800 text-sm lg:text-base hover:text-blue-700 transition-colors duration-300"
+                  className={`text-sm lg:text-base transition-colors duration-300 ${
+                    isDarkMode 
+                      ? 'text-gray-200 hover:text-blue-400' 
+                      : 'text-gray-800 hover:text-blue-700'
+                  }`}
                 >
                   (425) 476-5411
                 </a>
@@ -212,8 +300,12 @@ const Footer = () => {
             <div className="flex items-start gap-4">
               <span className="text-xl lg:text-2xl mt-1">📍</span>
               <div>
-                <div className="text-xs lg:text-sm text-gray-600 mb-1">Localização</div>
-                <div className="text-gray-800 text-sm lg:text-base">
+                <div className={`text-xs lg:text-sm mb-1 ${
+                  isDarkMode ? 'text-gray-400' : 'text-gray-600'
+                }`}>Localização</div>
+                <div className={`text-sm lg:text-base ${
+                  isDarkMode ? 'text-gray-200' : 'text-gray-800'
+                }`}>
                   Seattle, WA
                 </div>
               </div>
@@ -222,27 +314,43 @@ const Footer = () => {
         </div>
 
         {/* Footer Bottom */}
-        <div className="pt-6 lg:pt-8 border-t border-blue-300/30">
+        <div className={`pt-6 lg:pt-8 border-t ${
+          isDarkMode ? 'border-white/10' : 'border-blue-300/30'
+        }`}>
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 lg:gap-6">
-            <div className="text-gray-600 text-sm lg:text-base text-center sm:text-left">
+            <div className={`text-sm lg:text-base text-center sm:text-left ${
+              isDarkMode ? 'text-gray-400' : 'text-gray-600'
+            }`}>
               © 2025 SparklHaven Cleaning Service. Todos os direitos reservados.
             </div>
             <div className="flex flex-wrap justify-center sm:justify-end gap-4 lg:gap-8">
               <a 
                 href="#privacy" 
-                className="text-gray-600 hover:text-blue-700 text-sm lg:text-base transition-colors duration-300"
+                className={`text-sm lg:text-base transition-colors duration-300 ${
+                  isDarkMode 
+                    ? 'text-gray-400 hover:text-blue-400' 
+                    : 'text-gray-600 hover:text-blue-700'
+                }`}
               >
                 Política de Privacidade
               </a>
               <a 
                 href="#terms" 
-                className="text-gray-600 hover:text-blue-700 text-sm lg:text-base transition-colors duration-300"
+                className={`text-sm lg:text-base transition-colors duration-300 ${
+                  isDarkMode 
+                    ? 'text-gray-400 hover:text-blue-400' 
+                    : 'text-gray-600 hover:text-blue-700'
+                }`}
               >
                 Termos de Uso
               </a>
               <a 
                 href="#cookies" 
-                className="text-gray-600 hover:text-blue-700 text-sm lg:text-base transition-colors duration-300"
+                className={`text-sm lg:text-base transition-colors duration-300 ${
+                  isDarkMode 
+                    ? 'text-gray-400 hover:text-blue-400' 
+                    : 'text-gray-600 hover:text-blue-700'
+                }`}
               >
                 Cookies
               </a>
