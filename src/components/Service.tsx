@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useTheme } from '../contexts/ThemeContext';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const CompleteServicesPage = () => {
   const { isDarkMode } = useTheme();
+  const { t } = useLanguage();
   const [currentImageIndexes, setCurrentImageIndexes] = useState<{[key: number]: number}>({
     0: 0,
     1: 0,
@@ -14,16 +16,16 @@ const CompleteServicesPage = () => {
   const mainServices = [
     {
       icon: "🏡",
-      title: "Limpeza Residencial",
-      subtitle: "Seu Lar Sempre Impecável",
-      description: "Cuidamos da sua casa com carinho e atenção aos detalhes. Serviços semanais, quinzenais ou mensais adaptados às suas necessidades.",
-      features: [
-        "Limpeza completa de todos os cômodos",
-        "Aspiração e lavagem de pisos",
-        "Limpeza profunda de cozinha",
-        "Sanitização completa de banheiros",
-        "Organização de ambientes",
-        "Produtos de limpeza inclusos"
+      titleKey: "services.residential.title",
+      subtitleKey: "services.residential.subtitle",
+      descKey: "services.residential.desc",
+      featureKeys: [
+        "services.residential.feature1",
+        "services.residential.feature2",
+        "services.residential.feature3",
+        "services.residential.feature4",
+        "services.residential.feature5",
+        "services.residential.feature6"
       ],
       color: "from-blue-500 to-cyan-500",
       borderColor: "ring-blue-400/40",
@@ -35,16 +37,16 @@ const CompleteServicesPage = () => {
     },
     {
       icon: "🏢",
-      title: "Limpeza Comercial",
-      subtitle: "Ambiente Profissional Impecável",
-      description: "Mantemos seu estabelecimento comercial sempre limpo e acolhedor para seus clientes. Trabalhamos em horários flexíveis.",
-      features: [
-        "Lojas e estabelecimentos",
-        "Restaurantes e cafeterias",
-        "Academias e centros fitness",
-        "Limpeza após horário comercial",
-        "Manutenção de áreas externas",
-        "Produtos profissionais"
+      titleKey: "services.commercial.title",
+      subtitleKey: "services.commercial.subtitle",
+      descKey: "services.commercial.desc",
+      featureKeys: [
+        "services.commercial.feature1",
+        "services.commercial.feature2",
+        "services.commercial.feature3",
+        "services.commercial.feature4",
+        "services.commercial.feature5",
+        "services.commercial.feature6"
       ],
       color: "from-green-500 to-teal-500",
       borderColor: "ring-green-400/40",
@@ -56,16 +58,16 @@ const CompleteServicesPage = () => {
     },
     {
       icon: "💼",
-      title: "Limpeza de Escritórios",
-      subtitle: "Produtividade em Ambiente Limpo",
-      description: "Escritórios limpos e organizados aumentam a produtividade. Oferecemos serviços diários, semanais ou sob demanda.",
-      features: [
-        "Limpeza de mesas e estações",
-        "Sanitização de banheiros",
-        "Áreas comuns e recepção",
-        "Salas de reunião",
-        "Copas e cozinhas corporativas",
-        "Coleta seletiva de lixo"
+      titleKey: "services.office.title",
+      subtitleKey: "services.office.subtitle",
+      descKey: "services.office.desc",
+      featureKeys: [
+        "services.office.feature1",
+        "services.office.feature2",
+        "services.office.feature3",
+        "services.office.feature4",
+        "services.office.feature5",
+        "services.office.feature6"
       ],
       color: "from-purple-500 to-pink-500",
       borderColor: "ring-purple-400/40",
@@ -77,16 +79,16 @@ const CompleteServicesPage = () => {
     },
     {
       icon: "📦",
-      title: "Move In & Move Out",
-      subtitle: "Mudanças Sem Estresse",
-      description: "Limpeza profunda completa para quando você está entrando ou saindo de uma propriedade. Deixamos tudo brilhando!",
-      features: [
-        "Limpeza profunda completa",
-        "Todos os armários por dentro",
-        "Eletrodomésticos detalhados",
-        "Janelas e molduras",
-        "Paredes e rodapés",
-        "Garantia de satisfação"
+      titleKey: "services.moveInOut.title",
+      subtitleKey: "services.moveInOut.subtitle",
+      descKey: "services.moveInOut.desc",
+      featureKeys: [
+        "services.moveInOut.feature1",
+        "services.moveInOut.feature2",
+        "services.moveInOut.feature3",
+        "services.moveInOut.feature4",
+        "services.moveInOut.feature5",
+        "services.moveInOut.feature6"
       ],
       color: "from-orange-500 to-red-500",
       borderColor: "ring-orange-400/40",
@@ -99,16 +101,16 @@ const CompleteServicesPage = () => {
     },
     {
       icon: "🗑️",
-      title: "Remoção de Lixo",
-      subtitle: "Descarte Responsável",
-      description: "Serviço completo de coleta e descarte de lixo residencial e comercial. Reciclagem e descarte ecológico.",
-      features: [
-        "Coleta regular programada",
-        "Remoção de lixo volumoso",
-        "Reciclagem adequada",
-        "Descarte ecológico",
-        "Limpeza de lixeiras",
-        "Serviço pontual e confiável"
+      titleKey: "services.trash.title",
+      subtitleKey: "services.trash.subtitle",
+      descKey: "services.trash.desc",
+      featureKeys: [
+        "services.trash.feature1",
+        "services.trash.feature2",
+        "services.trash.feature3",
+        "services.trash.feature4",
+        "services.trash.feature5",
+        "services.trash.feature6"
       ],
       color: "from-yellow-500 to-orange-500",
       borderColor: "ring-yellow-400/40",
@@ -134,11 +136,11 @@ const CompleteServicesPage = () => {
   }, []);
 
   const workflow = [
-    { step: "1", title: "Contato", desc: "Entre em contato conosco" },
-    { step: "2", title: "Orçamento", desc: "Avaliação gratuita" },
-    { step: "3", title: "Agendamento", desc: "Escolha data e hora" },
-    { step: "4", title: "Limpeza", desc: "Trabalho impecável" },
-    { step: "5", title: "Satisfação", desc: "Garantia total" }
+    { step: "1", titleKey: "services.workflow.contact", descKey: "services.workflow.contactDesc" },
+    { step: "2", titleKey: "services.workflow.estimate", descKey: "services.workflow.estimateDesc" },
+    { step: "3", titleKey: "services.workflow.schedule", descKey: "services.workflow.scheduleDesc" },
+    { step: "4", titleKey: "services.workflow.cleaning", descKey: "services.workflow.cleaningDesc" },
+    { step: "5", titleKey: "services.workflow.satisfaction", descKey: "services.workflow.satisfactionDesc" }
   ];
 
   const scrollToSection = (sectionId: string) => {
@@ -167,19 +169,19 @@ const CompleteServicesPage = () => {
                 : 'bg-blue-600/10 ring-1 ring-blue-600/30 text-blue-900'
             }`}>
               <span>✨</span>
-              <span>Nossos Serviços</span>
+              <span>{t('services.badge')}</span>
             </div>
             <h2 className={`text-4xl lg:text-6xl font-extrabold mb-6 bg-clip-text text-transparent text-start lg:text-center pb-5 ${
               isDarkMode 
                 ? 'bg-gradient-to-r from-white via-blue-400 to-purple-400' 
                 : 'bg-gradient-to-r from-gray-800 via-blue-900 to-purple-900'
             }`}>
-              Cuidamos do que é mais importante: sua Família e seu Negócio
+              {t('services.title')}
             </h2>
             <p className={`text-xl max-w-3xl mx-auto text-start lg:text-center ${
               isDarkMode ? 'text-gray-400' : 'text-gray-700'
             }`}>
-              Do residencial ao comercial, cuidamos de cada detalhe com profissionalismo e dedicação
+              {t('services.subtitle')}
             </p>
           </div>
 
@@ -196,18 +198,18 @@ const CompleteServicesPage = () => {
                     <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-br ${service.color} bg-opacity-20 mb-6 group-hover:scale-110 transition-transform duration-300`}>
                       <span className="text-6xl">{service.icon}</span>
                     </div>
-                    <h3 className="text-3xl lg:text-4xl font-bold mb-3 text-white">{service.title}</h3>
-                    <p className="text-xl text-blue-400 mb-4">{service.subtitle}</p>
-                    <p className="text-gray-300 text-lg leading-relaxed mb-6">{service.description}</p>
+                    <h3 className="text-3xl lg:text-4xl font-bold mb-3 text-white">{t(service.titleKey)}</h3>
+                    <p className="text-xl text-blue-400 mb-4">{t(service.subtitleKey)}</p>
+                    <p className="text-gray-300 text-lg leading-relaxed mb-6">{t(service.descKey)}</p>
                     
                     {/* Features List */}
                     <div className="bg-gray-900/50 ring-1 ring-white/10 rounded-2xl p-6">
-                      <h4 className="text-lg font-semibold mb-4 text-gray-200">O que está incluso:</h4>
+                      <h4 className="text-lg font-semibold mb-4 text-gray-200">{t('hero.included')}</h4>
                       <ul className="space-y-3">
-                        {service.features.map((feature, idx) => (
+                        {service.featureKeys.map((feature, idx) => (
                           <li key={idx} className="flex items-start gap-3">
                             <span className="text-green-400 text-xl mt-0.5">✓</span>
-                            <span className="text-gray-300">{feature}</span>
+                            <span className="text-gray-300">{t(feature)}</span>
                           </li>
                         ))}
                       </ul>
@@ -217,7 +219,7 @@ const CompleteServicesPage = () => {
                       onClick={() => scrollToSection('contact')}
                       className="mt-6 bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-blue-500/25 flex items-center gap-2 min-w-full justify-center"
                     >
-                      📞 Solicitar Orçamento
+                      📞 {t('services.quote')}
                     </button>
                   </div>
 
@@ -233,7 +235,7 @@ const CompleteServicesPage = () => {
                         >
                           <img
                             src={img}
-                            alt={`${service.title} - Foto ${imgIdx + 1}`}
+                            alt={`${t(service.titleKey)} - Photo ${imgIdx + 1}`}
                             className="w-full h-full object-cover"
                             onError={(e) => {
                               e.currentTarget.style.display = 'none';
@@ -244,8 +246,8 @@ const CompleteServicesPage = () => {
                           <div className="w-full h-full bg-gradient-to-br from-gray-700 to-gray-800 hidden items-center justify-center">
                             <div className="text-center">
                               <span className="text-6xl mb-4 block">{service.icon}</span>
-                              <p className="text-gray-400 text-sm">Imagem {imgIdx + 1} de 3</p>
-                              <p className="text-gray-500 text-xs mt-2">{service.title}</p>
+                              <p className="text-gray-400 text-sm">Image {imgIdx + 1} of 3</p>
+                              <p className="text-gray-500 text-xs mt-2">{t(service.titleKey)}</p>
                             </div>
                           </div>
                         </div>
@@ -264,7 +266,7 @@ const CompleteServicesPage = () => {
                                 ? 'bg-blue-400 w-8' 
                                 : 'bg-white/50 hover:bg-white/80'
                             }`}
-                            aria-label={`Ver imagem ${dotIndex + 1}`}
+                            aria-label={`View image ${dotIndex + 1}`}
                           />
                         ))}
                       </div>
@@ -289,17 +291,17 @@ const CompleteServicesPage = () => {
                 : 'bg-blue-600/10 ring-1 ring-blue-600/30 text-blue-900'
             }`}>
               <span>🔄</span>
-              <span>Como Funciona</span>
+              <span>{t('services.workflow.badge')}</span>
             </div>
             <h2 className={`text-4xl lg:text-6xl font-extrabold mb-6 bg-clip-text text-transparent ${
               isDarkMode 
                 ? 'bg-gradient-to-r from-white via-blue-400 to-purple-400' 
                 : 'bg-gradient-to-r from-gray-800 via-blue-900 to-purple-900'
             }`}>
-              Processo Simples e Rápido
+              {t('services.workflow.title')}
             </h2>
             <p className={`text-xl ${isDarkMode ? 'text-gray-400' : 'text-gray-700'}`}>
-              Em apenas 5 passos seu espaço estará impecável
+              {t('services.workflow.subtitle')}
             </p>
           </div>
 
@@ -311,8 +313,8 @@ const CompleteServicesPage = () => {
                     <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4 text-white">
                       {item.step}
                     </div>
-                    <h3 className="font-bold text-lg mb-2 text-white">{item.title}</h3>
-                    <p className="text-sm text-gray-300">{item.desc}</p>
+                    <h3 className="font-bold text-lg mb-2 text-white">{t(item.titleKey)}</h3>
+                    <p className="text-sm text-gray-300">{t(item.descKey)}</p>
                   </div>
                   {index < workflow.length - 1 && (
                     <div className={`hidden lg:block absolute -right-3 top-1/2 -translate-y-1/2 text-2xl ${
@@ -333,16 +335,16 @@ const CompleteServicesPage = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-gradient-to-br from-gray-800 to-gray-900 ring-1 ring-blue-400/30 rounded-3xl p-12 text-center shadow-2xl">
             <h2 className="text-3xl lg:text-5xl font-bold mb-6 text-white">
-              Pronto para ter um espaço impecável?
+              {t('services.cta.title')}
             </h2>
             <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-              Entre em contato hoje e receba um orçamento gratuito personalizado para suas necessidades
+              {t('services.cta.subtitle')}
             </p>
             <button 
               onClick={() => scrollToSection('contact')}
               className="bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-blue-500/25"
             >
-              📞 Free Estimate
+              📞 {t('hero.cta')}
             </button>
           </div>
         </div>

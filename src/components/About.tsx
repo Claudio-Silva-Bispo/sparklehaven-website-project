@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useTheme } from '../contexts/ThemeContext';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const About = () => {
   const { isDarkMode } = useTheme();
+  const { t } = useLanguage();
   const [isVisible, setIsVisible] = useState(false);
   const [showPhoto, setShowPhoto] = useState(false);
 
@@ -74,7 +76,7 @@ const About = () => {
               : 'bg-blue-600/10 ring-1 ring-blue-600/30 text-blue-900'
           }`}>
             <span>👨‍👩‍👧‍👦</span>
-            <span>Nossa Família</span>
+            <span>{t('about.badge')}</span>
           </div>
           
           <h2 className={`text-4xl md:text-5xl lg:text-4xl xl:text-5xl font-extrabold mb-6 bg-clip-text text-transparent text-start lg:text-center ${
@@ -82,13 +84,13 @@ const About = () => {
               ? 'bg-gradient-to-r from-white to-blue-400' 
               : 'bg-gradient-to-r from-gray-800 via-blue-900 to-blue-800'
           }`}>
-            Cuidamos da sua casa como se fosse a Nossa
+            {t('about.title')}
           </h2>
           
           <p className={`text-lg lg:text-xl max-w-3xl mx-auto leading-relaxed text-start lg:text-center ${
             isDarkMode ? 'text-gray-400' : 'text-gray-700'
           }`}>
-            Uma empresa familiar que entende o valor de um lar limpo e acolhedor
+            {t('about.subtitle')}
           </p>
         </div>
 
@@ -119,11 +121,11 @@ const About = () => {
               <div className={`font-semibold mb-4 ${
                 isDarkMode ? 'text-blue-400' : 'text-blue-700'
               }`}>
-                SparklHaven Cleaning Service
+                {t('about.company')}
               </div>
               <div className={`text-sm ${
                 isDarkMode ? 'text-gray-400' : 'text-gray-600'
-              }`}>Seattle, WA • Desde 2015</div>
+              }`}>{t('about.location')}</div>
             </div>
 
             {/* Bio */}
@@ -131,17 +133,17 @@ const About = () => {
               <p className={`leading-relaxed ${
                 isDarkMode ? 'text-gray-300' : 'text-gray-700'
               }`}>
-                Somos um casal que começou este negócio com um sonho simples: oferecer o mesmo cuidado e atenção às casas dos nossos clientes que damos à nossa própria família. Entendemos que sua casa é mais do que apenas um lugar - é onde sua família cria memórias, cresce e vive.
+                {t('about.bio1')}
               </p>
               <p className={`leading-relaxed ${
                 isDarkMode ? 'text-gray-300' : 'text-gray-700'
               }`}>
-                Há mais de 8 anos na região de Seattle, construímos relacionamentos duradouros com nossos clientes, tratando cada casa como se fosse nossa. Sabemos o quanto é importante ter confiança nas pessoas que entram no seu lar, e levamos essa responsabilidade muito a sério.
+                {t('about.bio2')}
               </p>
               <p className={`leading-relaxed ${
                 isDarkMode ? 'text-gray-300' : 'text-gray-700'
               }`}>
-                Nossa abordagem é pessoal e atenciosa. Não somos apenas uma empresa de limpeza - somos uma família cuidando da sua família. Cada detalhe importa para nós, porque entendemos que um lar limpo e organizado traz paz de espírito e mais tempo para você aproveitar com quem você ama.
+                {t('about.bio3')}
               </p>
 
               {/* Valores */}
@@ -154,10 +156,10 @@ const About = () => {
                   <div className="text-3xl mb-2">❤️</div>
                   <div className={`font-semibold mb-1 ${
                     isDarkMode ? 'text-blue-400' : 'text-blue-700'
-                  }`}>Cuidado</div>
+                  }`}>{t('about.care')}</div>
                   <div className={`text-sm ${
                     isDarkMode ? 'text-gray-400' : 'text-gray-600'
-                  }`}>Como família</div>
+                  }`}>{t('about.careDesc')}</div>
                 </div>
                 <div className={`ring-1 rounded-lg p-4 text-center transition-colors ${
                   isDarkMode 
@@ -167,10 +169,10 @@ const About = () => {
                   <div className="text-3xl mb-2">🤝</div>
                   <div className={`font-semibold mb-1 ${
                     isDarkMode ? 'text-blue-400' : 'text-blue-700'
-                  }`}>Confiança</div>
+                  }`}>{t('about.trust')}</div>
                   <div className={`text-sm ${
                     isDarkMode ? 'text-gray-400' : 'text-gray-600'
-                  }`}>Total segurança</div>
+                  }`}>{t('about.trustDesc')}</div>
                 </div>
                 <div className={`ring-1 rounded-lg p-4 text-center transition-colors ${
                   isDarkMode 
@@ -180,10 +182,10 @@ const About = () => {
                   <div className="text-3xl mb-2">⭐</div>
                   <div className={`font-semibold mb-1 ${
                     isDarkMode ? 'text-blue-400' : 'text-blue-700'
-                  }`}>Dedicação</div>
+                  }`}>{t('about.dedication')}</div>
                   <div className={`text-sm ${
                     isDarkMode ? 'text-gray-400' : 'text-gray-600'
-                  }`}>Cada detalhe</div>
+                  }`}>{t('about.dedicationDesc')}</div>
                 </div>
               </div>
 
@@ -193,7 +195,7 @@ const About = () => {
                   className="bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white px-4 py-4 lg:px-8 lg:py-4 rounded-lg font-semibold md:text-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-blue-500/25 flex items-center w-full justify-center"
                 >
                   <a href="tel:+14255886654">
-                    📞 Free Estimate
+                    📞 {t('hero.cta')}
                   </a>
                 </button>
               </div>
@@ -205,38 +207,38 @@ const About = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 text-center">
           <div className="bg-gradient-to-br from-gray-800 to-gray-900 backdrop-blur-sm ring-1 ring-white/10 rounded-xl p-6 hover:from-gray-700 hover:to-gray-800 hover:shadow-xl transition-all duration-300">
             <div className="text-4xl mb-4">🏡</div>
-            <h3 className="text-xl font-bold text-white mb-3">Negócio Familiar</h3>
-            <p className="text-gray-300">Operado por um casal dedicado que trata cada cliente como parte da nossa família estendida.</p>
+            <h3 className="text-xl font-bold text-white mb-3">{t('about.familyBusiness')}</h3>
+            <p className="text-gray-300">{t('about.familyBusinessDesc')}</p>
           </div>
 
           <div className="bg-gradient-to-br from-gray-800 to-gray-900 backdrop-blur-sm ring-1 ring-white/10 rounded-xl p-6 hover:from-gray-700 hover:to-gray-800 hover:shadow-xl transition-all duration-300">
             <div className="text-4xl mb-4">🔐</div>
-            <h3 className="text-xl font-bold text-white mb-3">Confiável</h3>
-            <p className="text-gray-300">Background verificado, seguros completos e anos de referências comprovadas na comunidade.</p>
+            <h3 className="text-xl font-bold text-white mb-3">{t('about.reliable')}</h3>
+            <p className="text-gray-300">{t('about.reliableDesc')}</p>
           </div>
 
           <div className="bg-gradient-to-br from-gray-800 to-gray-900 backdrop-blur-sm ring-1 ring-white/10 rounded-xl p-6 hover:from-gray-700 hover:to-gray-800 hover:shadow-xl transition-all duration-300">
             <div className="text-4xl mb-4">💚</div>
-            <h3 className="text-xl font-bold text-white mb-3">Produtos Ecológicos</h3>
-            <p className="text-gray-300">Usamos produtos seguros para sua família, seus pets e o meio ambiente.</p>
+            <h3 className="text-xl font-bold text-white mb-3">{t('about.ecoFriendly')}</h3>
+            <p className="text-gray-300">{t('about.ecoFriendlyDesc')}</p>
           </div>
 
           <div className="bg-gradient-to-br from-gray-800 to-gray-900 backdrop-blur-sm ring-1 ring-white/10 rounded-xl p-6 hover:from-gray-700 hover:to-gray-800 hover:shadow-xl transition-all duration-300">
             <div className="text-4xl mb-4">⏰</div>
-            <h3 className="text-xl font-bold text-white mb-3">Flexibilidade</h3>
-            <p className="text-gray-300">Horários que se adaptam à rotina da sua família, incluindo fins de semana.</p>
+            <h3 className="text-xl font-bold text-white mb-3">{t('about.flexibility')}</h3>
+            <p className="text-gray-300">{t('about.flexibilityDesc')}</p>
           </div>
 
           <div className="bg-gradient-to-br from-gray-800 to-gray-900 backdrop-blur-sm ring-1 ring-white/10 rounded-xl p-6 hover:from-gray-700 hover:to-gray-800 hover:shadow-xl transition-all duration-300">
             <div className="text-4xl mb-4">✨</div>
-            <h3 className="text-xl font-bold text-white mb-3">Atenção aos Detalhes</h3>
-            <p className="text-gray-300">Cuidamos de cada canto da sua casa com o mesmo carinho que cuidamos da nossa.</p>
+            <h3 className="text-xl font-bold text-white mb-3">{t('about.attention')}</h3>
+            <p className="text-gray-300">{t('about.attentionDesc')}</p>
           </div>
 
           <div className="bg-gradient-to-br from-gray-800 to-gray-900 backdrop-blur-sm ring-1 ring-white/10 rounded-xl p-6 hover:from-gray-700 hover:to-gray-800 hover:shadow-xl transition-all duration-300">
             <div className="text-4xl mb-4">😊</div>
-            <h3 className="text-xl font-bold text-white mb-3">Garantia de Satisfação</h3>
-            <p className="text-gray-300">Se não ficar 100% satisfeito, voltamos para acertar sem custo adicional.</p>
+            <h3 className="text-xl font-bold text-white mb-3">{t('about.satisfaction')}</h3>
+            <p className="text-gray-300">{t('about.satisfactionDesc')}</p>
           </div>
         </div>
       </div>

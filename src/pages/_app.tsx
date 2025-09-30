@@ -2,16 +2,19 @@ import type { AppProps } from 'next/app';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { FaArrowUp, FaWhatsapp, FaSun, FaMoon } from 'react-icons/fa';
+import { MdLanguage } from 'react-icons/md';
 import '../globals.css';
 
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { ThemeProvider, useTheme } from '../contexts/ThemeContext';
+import { LanguageProvider, useLanguage } from '../contexts/LanguageContext';
 
 function AppContent({ Component, pageProps }: AppProps) {
   const router = useRouter();
   const [showScrollTop, setShowScrollTop] = useState(false);
   const { isDarkMode, toggleTheme } = useTheme();
+  const { language, toggleLanguage } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,6 +37,18 @@ function AppContent({ Component, pageProps }: AppProps) {
       <Footer />
 
       <div className="fixed bottom-6 right-6 flex flex-col gap-3 z-50">
+        {/* Botão de Idioma */}
+        <button
+          onClick={toggleLanguage}
+          className="p-3 rounded-full bg-gradient-to-r from-blue-500 to-teal-600 text-white shadow-lg hover:from-green-600 hover:to-teal-700 transition-all duration-300 hover:scale-110 flex items-center justify-center"
+          aria-label={language === 'en' ? 'Mudar para Português' : 'Change to English'}
+        >
+          <div className="flex items-center gap-1">
+            <MdLanguage size={20} />
+            {/* <span className="text-xs font-bold">{language === 'en' ? 'PT' : 'EN'}</span> */}
+          </div>
+        </button>
+
         {/* Botão de Tema */}
         <button
           onClick={toggleTheme}
@@ -71,9 +86,11 @@ function AppContent({ Component, pageProps }: AppProps) {
 
 function MyApp(props: AppProps) {
   return (
-    <ThemeProvider>
-      <AppContent {...props} />
-    </ThemeProvider>
+    <LanguageProvider>
+      <ThemeProvider>
+        <AppContent {...props} />
+      </ThemeProvider>
+    </LanguageProvider>
   );
 }
 

@@ -4,7 +4,7 @@ import nodemailer from 'nodemailer';  /* Instalar npm install nodemailer e npm i
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') return res.status(405).json({ message: 'Método não permitido' });
 
-  const { name, role, company, message, rating } = req.body;
+  const { name, email, phone, message, rating } = req.body;
 
   const transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com', 
@@ -26,15 +26,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     await transporter.sendMail({
       from: `"Feedback Site" <${process.env.EMAIL_USER}>`,
       to: process.env.EMAIL_DEST,
-      subject: `Novo Feedback - ${rating} estrelas - ${company}`,
+      subject: `Novo Feedback - ${rating} estrelas - ${phone}`,
       text: `
       📊 NOVO FEEDBACK RECEBIDO
       
       Avaliação: ${stars} (${rating}/5)
       
       Nome: ${name}
-      Cargo: ${role}
-      Empresa: ${company}
+      Email: ${email}
+      Telefone: ${phone}
       
       Depoimento:
       ${message}
@@ -51,8 +51,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         
         <div style="margin: 20px 0;">
           <p><strong>Nome:</strong> ${name}</p>
-          <p><strong>Cargo:</strong> ${role}</p>
-          <p><strong>Empresa:</strong> ${company}</p>
+          <p><strong>Cargo:</strong> ${email}</p>
+          <p><strong>Empresa:</strong> ${phone}</p>
         </div>
         
         <div style="background: #f9fafb; padding: 15px; border-left: 4px solid #3b82f6; margin: 20px 0;">

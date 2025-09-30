@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useTheme } from '../contexts/ThemeContext';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const Hero: React.FC = () => {
   const { isDarkMode } = useTheme();
+  const { t } = useLanguage();
   const [activePanel, setActivePanel] = useState<'residential' | 'commercial' | 'office'>('residential');
   const [currentPanelIndex, setCurrentPanelIndex] = useState(0);
 
@@ -24,6 +26,40 @@ const Hero: React.FC = () => {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
+
+  // Dados dos serviços com traduções
+  const services = [
+    { icon: '🏡', textKey: 'hero.service1' },
+    { icon: '🏢', textKey: 'hero.service2' },
+    { icon: '📦', textKey: 'hero.service3' }
+  ];
+
+  // Items da lista de limpeza residencial
+  const residentialItems = [
+    'hero.residential.feature1',
+    'hero.residential.feature2',
+    'hero.residential.feature3',
+    'hero.residential.feature4',
+    'hero.residential.feature5'
+  ];
+
+  // Items da lista comercial
+  const commercialItems = [
+    'hero.commercial.feature1',
+    'hero.commercial.feature2',
+    'hero.commercial.feature3',
+    'hero.commercial.feature4',
+    'hero.commercial.feature5'
+  ];
+
+  // Items da lista de escritórios
+  const officeItems = [
+    'hero.office.feature1',
+    'hero.office.feature2',
+    'hero.office.feature3',
+    'hero.office.feature4',
+    'hero.office.feature5'
+  ];
 
   return (
     <div className="relative">
@@ -57,7 +93,7 @@ const Hero: React.FC = () => {
                   ? 'bg-blue-500/10 ring-1 ring-blue-500/30 text-blue-400' 
                   : 'bg-blue-600/10 ring-1 ring-blue-600/30 text-blue-900'
               }`}>
-                <span className='p-3'>🏠</span> <p className='p-3'>Empresa Familiar • Seattle, WA</p>
+                <span className='p-3'>🏠</span> <p className='p-3'>{t('hero.badge')}</p>
               </div>
               
               <h1 className={`text-3xl md:text-5xl lg:text-4xl xl:text-5xl font-extrabold leading-tight bg-clip-text text-transparent ${
@@ -65,22 +101,18 @@ const Hero: React.FC = () => {
                   ? 'bg-gradient-to-r from-white to-blue-400' 
                   : 'bg-gradient-to-r from-gray-800 via-blue-900 to-blue-800'
               }`}>
-                Limpeza Profissional para seu LAR e seu NEGÓCIO
+                {t('hero.title')}
               </h1>
               
               <p className={`md:text-xl mb-3 leading-relaxed pt-3 ${
                 isDarkMode ? 'text-gray-400' : 'text-gray-700'
               }`}>
-                Transformamos seu espaço com serviços de limpeza de alta qualidade. Atendemos residências, escritórios e estabelecimentos comerciais na região de Seattle.
+                {t('hero.description')}
               </p>
               
               <div className="mb-10">
                 <div className="flex flex-col gap-3">
-                  {[
-                    { icon: '🏡', text: 'Limpeza Residencial - Cuidado com sua Casa' },
-                    { icon: '🏢', text: 'Limpeza Comercial - Ambientes Profissionais' },
-                    { icon: '📦', text: 'Move In & Move Out - Mudanças Sem Estresse' }
-                  ].map((service, index) => (
+                  {services.map((service, index) => (
                     <div 
                       key={index}
                       className={`flex items-center gap-2 p-1 lg:p-3 rounded-lg transition-all duration-300 hover:translate-x-2 ${
@@ -92,7 +124,7 @@ const Hero: React.FC = () => {
                       <div className="text-2xl w-10 text-center p-2 lg:p-3">{service.icon}</div>
                       <div className={`font-medium text-sm lg:text-md ${
                         isDarkMode ? 'text-gray-300' : 'text-gray-800'
-                      }`}>{service.text}</div>
+                      }`}>{t(service.textKey)}</div>
                     </div>
                   ))}
                 </div>
@@ -103,7 +135,7 @@ const Hero: React.FC = () => {
                   className="bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white px-6 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-blue-500/25 flex items-center gap-2"
                 >
                   <a href="tel:+14255886654">
-                    📞 Free Estimate
+                    📞 {t('hero.cta')}
                   </a>
                 </button>
                 <button 
@@ -114,7 +146,7 @@ const Hero: React.FC = () => {
                       : 'text-gray-700 hover:text-blue-700'
                   }`}
                 >
-                  Conheça os Serviços →
+                  {t('hero.learnMore')}
                 </button>
               </div>
             </div>
@@ -130,9 +162,9 @@ const Hero: React.FC = () => {
                 {/* Tabs */}
                 <div className="flex gap-2 lg:gap-3 justify-center flex-wrap pt-6 h-24 md:h-16 xl:h-16 mb-4">
                   {[
-                    { key: "residential", label: "🏡 Residencial" },
-                    { key: "commercial", label: "🏢 Comercial" },
-                    { key: "office", label: "💼 Escritórios" },
+                    { key: "residential", label: `🏡 ${t('hero.residential')}` },
+                    { key: "commercial", label: `🏢 ${t('hero.commercial')}` },
+                    { key: "office", label: `💼 ${t('hero.office')}` },
                   ].map((tab) => (
                     <button
                       key={tab.key}
@@ -166,7 +198,7 @@ const Hero: React.FC = () => {
                         <div className={`font-semibold text-base lg:text-lg ${
                           isDarkMode ? 'text-gray-300' : 'text-gray-800'
                         }`}>
-                          Limpeza Residencial
+                          {t('services.residential.title')}
                         </div>
                         <div className={`flex items-center gap-2 text-sm ${
                           isDarkMode ? 'text-blue-400' : 'text-blue-700'
@@ -174,28 +206,22 @@ const Hero: React.FC = () => {
                           <div className={`w-2 h-2 rounded-full animate-pulse ${
                             isDarkMode ? 'bg-blue-400' : 'bg-blue-600'
                           }`}></div>
-                          <span>Serviço Completo</span>
+                          <span>{t('hero.fullService')}</span>
                         </div>
                       </div>
 
                       <div className="space-y-3">
                         <h3 className={`font-semibold mb-3 ${
                           isDarkMode ? 'text-gray-300' : 'text-gray-800'
-                        }`}>O que está incluído:</h3>
-                        {[
-                          'Limpeza completa de todos os cômodos',
-                          'Limpeza de cozinha e banheiros',
-                          'Organização de ambientes',
-                          'Move In/Move Out disponível',
-                          'Produtos de limpeza inclusos'
-                        ].map((item, index) => (
+                        }`}>{t('hero.included')}</h3>
+                        {residentialItems.map((item, index) => (
                           <div key={index} className={`flex items-start gap-3 p-2 rounded-lg transition-colors ${
                             isDarkMode ? 'hover:bg-blue-500/5' : 'hover:bg-blue-50'
                           }`}>
                             <div className={`text-xl mt-0.5 ${
                               isDarkMode ? 'text-blue-400' : 'text-blue-600'
                             }`}>✓</div>
-                            <div className={isDarkMode ? 'text-gray-400' : 'text-gray-700'}>{item}</div>
+                            <div className={isDarkMode ? 'text-gray-400' : 'text-gray-700'}>{t(item)}</div>
                           </div>
                         ))}
                       </div>
@@ -206,13 +232,13 @@ const Hero: React.FC = () => {
                           : 'bg-blue-100/70 ring-blue-300/40'
                       }`}>
                         <div className={`text-center ${isDarkMode ? 'text-gray-300' : 'text-gray-800'}`}>
-                          <div className="text-sm mb-2">💡 Serviços Especiais</div>
+                          <div className="text-sm mb-2">💡 {t('hero.specialServices')}</div>
                           <div className={`font-semibold ${
                             isDarkMode ? 'text-blue-400' : 'text-blue-700'
-                          }`}>Move In & Move Out</div>
+                          }`}>{t('hero.moveInOut')}</div>
                           <div className={`text-sm mt-1 ${
                             isDarkMode ? 'text-gray-400' : 'text-gray-600'
-                          }`}>Limpeza profunda para mudanças</div>
+                          }`}>{t('hero.deepCleaning')}</div>
                         </div>
                       </div>
                     </div>
@@ -229,7 +255,7 @@ const Hero: React.FC = () => {
                         <div className={`font-semibold text-base lg:text-lg ${
                           isDarkMode ? 'text-gray-300' : 'text-gray-800'
                         }`}>
-                          Limpeza Comercial
+                          {t('services.commercial.title')}
                         </div>
                         <div className={`flex items-center gap-2 text-sm ${
                           isDarkMode ? 'text-blue-400' : 'text-blue-700'
@@ -237,28 +263,22 @@ const Hero: React.FC = () => {
                           <div className={`w-2 h-2 rounded-full ${
                             isDarkMode ? 'bg-blue-400' : 'bg-blue-600'
                           }`}></div>
-                          <span>Profissional</span>
+                          <span>{t('hero.professional')}</span>
                         </div>
                       </div>
 
                       <div className="space-y-3">
                         <h3 className={`font-semibold mb-3 ${
                           isDarkMode ? 'text-gray-300' : 'text-gray-800'
-                        }`}>Serviços inclusos:</h3>
-                        {[
-                          'Lojas e estabelecimentos comerciais',
-                          'Restaurantes e cafeterias',
-                          'Academias e centros fitness',
-                          'Limpeza após horário comercial',
-                          'Manutenção de áreas externas'
-                        ].map((item, index) => (
+                        }`}>{t('hero.included')}</h3>
+                        {commercialItems.map((item, index) => (
                           <div key={index} className={`flex items-start gap-3 p-2 rounded-lg transition-colors ${
                             isDarkMode ? 'hover:bg-blue-500/5' : 'hover:bg-blue-50'
                           }`}>
                             <div className={`text-xl mt-0.5 ${
                               isDarkMode ? 'text-blue-400' : 'text-blue-600'
                             }`}>✓</div>
-                            <div className={isDarkMode ? 'text-gray-400' : 'text-gray-700'}>{item}</div>
+                            <div className={isDarkMode ? 'text-gray-400' : 'text-gray-700'}>{t(item)}</div>
                           </div>
                         ))}
                       </div>
@@ -269,13 +289,13 @@ const Hero: React.FC = () => {
                           : 'bg-blue-100/70 ring-blue-300/40'
                       }`}>
                         <div className={`text-center ${isDarkMode ? 'text-gray-300' : 'text-gray-800'}`}>
-                          <div className="text-sm mb-2">🗑️ Incluso</div>
+                          <div className="text-sm mb-2">🗑️ Included</div>
                           <div className={`font-semibold ${
                             isDarkMode ? 'text-blue-400' : 'text-blue-700'
-                          }`}>Remoção de Lixo</div>
+                          }`}>{t('hero.trashRemoval')}</div>
                           <div className={`text-sm mt-1 ${
                             isDarkMode ? 'text-gray-400' : 'text-gray-600'
-                          }`}>Descarte responsável e reciclagem</div>
+                          }`}>{t('hero.responsibleDisposal')}</div>
                         </div>
                       </div>
                     </div>
@@ -292,7 +312,7 @@ const Hero: React.FC = () => {
                         <div className={`font-semibold text-base lg:text-lg ${
                           isDarkMode ? 'text-gray-300' : 'text-gray-800'
                         }`}>
-                          Limpeza de Escritórios
+                          {t('services.office.title')}
                         </div>
                         <div className={`flex items-center gap-2 text-sm ${
                           isDarkMode ? 'text-blue-400' : 'text-blue-700'
@@ -300,28 +320,22 @@ const Hero: React.FC = () => {
                           <div className={`w-2 h-2 rounded-full ${
                             isDarkMode ? 'bg-blue-400' : 'bg-blue-600'
                           }`}></div>
-                          <span>Corporativo</span>
+                          <span>{t('hero.corporate')}</span>
                         </div>
                       </div>
 
                       <div className="space-y-3">
                         <h3 className={`font-semibold mb-3 ${
                           isDarkMode ? 'text-gray-300' : 'text-gray-800'
-                        }`}>Ambiente corporativo:</h3>
-                        {[
-                          'Limpeza de mesas e estações',
-                          'Sanitização de banheiros',
-                          'Áreas comuns e recepção',
-                          'Salas de reunião e conferência',
-                          'Copas e cozinhas corporativas'
-                        ].map((item, index) => (
+                        }`}>{t('hero.included')}</h3>
+                        {officeItems.map((item, index) => (
                           <div key={index} className={`flex items-start gap-3 p-2 rounded-lg transition-colors ${
                             isDarkMode ? 'hover:bg-blue-500/5' : 'hover:bg-blue-50'
                           }`}>
                             <div className={`text-xl mt-0.5 ${
                               isDarkMode ? 'text-blue-400' : 'text-blue-600'
                             }`}>✓</div>
-                            <div className={isDarkMode ? 'text-gray-400' : 'text-gray-700'}>{item}</div>
+                            <div className={isDarkMode ? 'text-gray-400' : 'text-gray-700'}>{t(item)}</div>
                           </div>
                         ))}
                       </div>
@@ -332,13 +346,13 @@ const Hero: React.FC = () => {
                           : 'bg-blue-100/70 ring-blue-300/40'
                       }`}>
                         <div className={`text-center ${isDarkMode ? 'text-gray-300' : 'text-gray-800'}`}>
-                          <div className="text-sm mb-2">⏰ Flexibilidade</div>
+                          <div className="text-sm mb-2">⏰ Flexibility</div>
                           <div className={`font-semibold ${
                             isDarkMode ? 'text-blue-400' : 'text-blue-700'
-                          }`}>Horários Personalizados</div>
+                          }`}>{t('hero.customSchedule')}</div>
                           <div className={`text-sm mt-1 ${
                             isDarkMode ? 'text-gray-400' : 'text-gray-600'
-                          }`}>Atendemos fora do expediente</div>
+                          }`}>{t('hero.afterHours')}</div>
                         </div>
                       </div>
                     </div>

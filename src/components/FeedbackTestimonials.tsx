@@ -1,67 +1,118 @@
 import React, { useState, useEffect } from 'react';
-import { Star, Send, CheckCircle, Quote, ChevronLeft, ChevronRight } from 'lucide-react'; /* Instalar npm install lucide-react */
+import { Star, Send, CheckCircle, Quote, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const FeedbackTestimonials = () => {
   const { isDarkMode } = useTheme();
+  const { t, language } = useLanguage();
   const [rating, setRating] = useState(0);
   const [hoveredRating, setHoveredRating] = useState(0);
   const [formData, setFormData] = useState({
     name: '',
-    role: '',
-    company: '',
+    email: '',
+    phone: '',
     message: ''
   });
   const [submitted, setSubmitted] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const testimonials = [
-    {
-      name: "Maria Silva",
-      role: "Proprietária",
-      company: "Residência Particular",
-      text: "Excelente serviço! Minha casa nunca esteve tão limpa. A equipe é pontual, educada e muito cuidadosa com todos os detalhes.",
-      rating: 5
-    },
-    {
-      name: "João Santos",
-      role: "Gerente",
-      company: "Restaurante Bella Vista",
-      text: "Profissionais incríveis! Mantêm nosso restaurante impecável todos os dias. Confiamos totalmente no trabalho deles.",
-      rating: 5
-    },
-    {
-      name: "Ana Costa",
-      role: "Diretora",
-      company: "Tech Solutions Inc",
-      text: "Nosso escritório sempre está perfeito graças a eles. Trabalham de forma discreta e eficiente, sem atrapalhar nossa rotina.",
-      rating: 5
-    },
-    {
-      name: "Carlos Oliveira",
-      role: "Proprietário",
-      company: "Academia Fitness Pro",
-      text: "A limpeza da academia melhorou muito com este serviço. Nossos clientes sempre comentam sobre como tudo está limpo.",
-      rating: 5
-    },
-    {
-      name: "Patricia Lima",
-      role: "Gerente de Facilities",
-      company: "Corporate Tower",
-      text: "Parceria excelente! Atendem todas as nossas demandas com profissionalismo e qualidade superior.",
-      rating: 5
-    },
-    {
-      name: "Roberto Fernandes",
-      role: "Proprietário",
-      company: "Casa de Repouso Vida Plena",
-      text: "Cuidado e atenção excepcionais. Tratam nosso espaço com o respeito que nossos residentes merecem.",
-      rating: 5
-    }
-  ];
+  // Depoimentos em português e inglês
+  const testimonialsData = {
+    pt: [
+      {
+        name: "Maria Silva",
+        role: "Proprietária",
+        company: "Residência Particular",
+        text: "Excelente serviço! Minha casa nunca esteve tão limpa. A equipe é pontual, educada e muito cuidadosa com todos os detalhes.",
+        rating: 5
+      },
+      {
+        name: "João Santos",
+        role: "Gerente",
+        company: "Restaurante Bella Vista",
+        text: "Profissionais incríveis! Mantêm nosso restaurante impecável todos os dias. Confiamos totalmente no trabalho deles.",
+        rating: 5
+      },
+      {
+        name: "Ana Costa",
+        role: "Diretora",
+        company: "Tech Solutions Inc",
+        text: "Nosso escritório sempre está perfeito graças a eles. Trabalham de forma discreta e eficiente, sem atrapalhar nossa rotina.",
+        rating: 5
+      },
+      {
+        name: "Carlos Oliveira",
+        role: "Proprietário",
+        company: "Academia Fitness Pro",
+        text: "A limpeza da academia melhorou muito com este serviço. Nossos clientes sempre comentam sobre como tudo está limpo.",
+        rating: 5
+      },
+      {
+        name: "Patricia Lima",
+        role: "Gerente de Facilities",
+        company: "Corporate Tower",
+        text: "Parceria excelente! Atendem todas as nossas demandas com profissionalismo e qualidade superior.",
+        rating: 5
+      },
+      {
+        name: "Roberto Fernandes",
+        role: "Proprietário",
+        company: "Casa de Repouso Vida Plena",
+        text: "Cuidado e atenção excepcionais. Tratam nosso espaço com o respeito que nossos residentes merecem.",
+        rating: 5
+      }
+    ],
+    en: [
+      {
+        name: "Maria Silva",
+        role: "Homeowner",
+        company: "Private Residence",
+        text: "Excellent service! My house has never been so clean. The team is punctual, polite, and very careful with every detail.",
+        rating: 5
+      },
+      {
+        name: "John Santos",
+        role: "Manager",
+        company: "Bella Vista Restaurant",
+        text: "Amazing professionals! They keep our restaurant impeccable every day. We completely trust their work.",
+        rating: 5
+      },
+      {
+        name: "Ana Costa",
+        role: "Director",
+        company: "Tech Solutions Inc",
+        text: "Our office is always perfect thanks to them. They work discreetly and efficiently without disrupting our routine.",
+        rating: 5
+      },
+      {
+        name: "Carlos Oliveira",
+        role: "Owner",
+        company: "Fitness Pro Gym",
+        text: "The gym's cleanliness has greatly improved with this service. Our customers always comment on how clean everything is.",
+        rating: 5
+      },
+      {
+        name: "Patricia Lima",
+        role: "Facilities Manager",
+        company: "Corporate Tower",
+        text: "Excellent partnership! They meet all our demands with professionalism and superior quality.",
+        rating: 5
+      },
+      {
+        name: "Roberto Fernandes",
+        role: "Owner",
+        company: "Vida Plena Nursing Home",
+        text: "Exceptional care and attention. They treat our space with the respect our residents deserve.",
+        rating: 5
+      }
+    ]
+  };
+
+  const testimonials = testimonialsData[language];
 
   const handleSubmit = async () => {
-    if (rating === 0 || !formData.name || !formData.role || !formData.company || !formData.message) return;
+    if (rating === 0 || !formData.name || !formData.email || !formData.phone || !formData.message) return;
     
     try {
       const res = await fetch('/api/sendFeedback', {
@@ -79,22 +130,22 @@ const FeedbackTestimonials = () => {
         
         setTimeout(() => {
           setSubmitted(false);
-          setFormData({ name: '', role: '', company: '', message: '' });
+          setFormData({ name: '', email: '', phone: '', message: '' });
           setRating(0);
         }, 3000);
       } else {
-        alert('Erro ao enviar o feedback. Tente novamente.');
+        alert(language === 'pt' ? 'Erro ao enviar o feedback. Tente novamente.' : 'Error sending feedback. Please try again.');
       }
     } catch (err) {
       console.error(err);
-      alert('Erro ao enviar o feedback. Tente novamente.');
+      alert(language === 'pt' ? 'Erro ao enviar o feedback. Tente novamente.' : 'Error sending feedback. Please try again.');
     }
   };
 
   interface FormData {
     name: string;
-    role: string;
-    company: string;
+    email: string;
+    phone: string;
     message: string;
   }
 
@@ -137,19 +188,19 @@ const FeedbackTestimonials = () => {
               : 'bg-blue-600/10 ring-1 ring-blue-600/30 text-blue-900'
           }`}>
             <span>⭐</span>
-            <span>Feedback & Depoimentos</span>
+            <span>{t('feedback.badge')}</span>
           </div>
           <h2 className={`text-4xl lg:text-6xl font-extrabold mb-6 bg-clip-text text-transparent ${
             isDarkMode 
               ? 'bg-gradient-to-r from-white via-blue-400 to-purple-400' 
               : 'bg-gradient-to-r from-gray-800 via-blue-900 to-purple-900'
           }`}>
-            Compartilhe sua Experiência
+            {t('feedback.title')}
           </h2>
           <p className={`text-xl max-w-3xl mx-auto ${
             isDarkMode ? 'text-gray-400' : 'text-gray-700'
           }`}>
-            Seu feedback é importante para nós! Veja o que nossos clientes dizem
+            {t('feedback.subtitle')}
           </p>
         </div>
 
@@ -157,9 +208,9 @@ const FeedbackTestimonials = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 max-w-7xl mx-auto">
           
           {/* Left Column - Feedback Form */}
-          <div>
+          <div className="flex">
             {!submitted ? (
-              <div className={`backdrop-blur-sm rounded-3xl p-8 lg:p-10 shadow-xl ${
+              <div className={`backdrop-blur-sm rounded-3xl p-8 lg:p-10 shadow-xl w-full flex flex-col ${
                 isDarkMode 
                   ? 'bg-white/5 ring-1 ring-white/10' 
                   : 'bg-white/80 ring-1 ring-blue-200/50'
@@ -170,7 +221,7 @@ const FeedbackTestimonials = () => {
                   <label className={`block font-semibold mb-3 text-lg ${
                     isDarkMode ? 'text-white' : 'text-gray-800'
                   }`}>
-                    Avalie nosso serviço *
+                    {t('feedback.rate')}
                   </label>
                   <div className="flex gap-2">
                     {[1, 2, 3, 4, 5].map((star) => (
@@ -198,7 +249,7 @@ const FeedbackTestimonials = () => {
                   <label className={`block font-semibold mb-2 ${
                     isDarkMode ? 'text-white' : 'text-gray-800'
                   }`}>
-                    Nome Completo *
+                    {t('feedback.name')}
                   </label>
                   <input
                     type="text"
@@ -209,83 +260,83 @@ const FeedbackTestimonials = () => {
                         ? 'bg-white/10 ring-1 ring-white/20 text-white placeholder-gray-400' 
                         : 'bg-white ring-1 ring-blue-200/50 text-gray-800 placeholder-gray-500'
                     }`}
-                    placeholder="Seu nome"
+                    placeholder={t('feedback.namePlaceholder')}
                   />
                 </div>
 
-                {/* Role & Company */}
+                {/* Email & Phone */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
                   <div>
                     <label className={`block font-semibold mb-2 ${
                       isDarkMode ? 'text-white' : 'text-gray-800'
                     }`}>
-                      Cargo *
+                      {t('feedback.email')}
                     </label>
                     <input
-                      type="text"
-                      value={formData.role}
-                      onChange={(e) => handleChange('role', e.target.value)}
+                      type="email"
+                      value={formData.email}
+                      onChange={(e) => handleChange('email', e.target.value)}
                       className={`w-full rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all ${
                         isDarkMode 
                           ? 'bg-white/10 ring-1 ring-white/20 text-white placeholder-gray-400' 
                           : 'bg-white ring-1 ring-blue-200/50 text-gray-800 placeholder-gray-500'
                       }`}
-                      placeholder="Ex: Gerente"
+                      placeholder={t('feedback.emailPlaceholder')}
                     />
                   </div>
                   <div>
                     <label className={`block font-semibold mb-2 ${
                       isDarkMode ? 'text-white' : 'text-gray-800'
                     }`}>
-                      Empresa *
+                      {t('feedback.phone')}
                     </label>
                     <input
-                      type="text"
-                      value={formData.company}
-                      onChange={(e) => handleChange('company', e.target.value)}
+                      type="tel"
+                      value={formData.phone}
+                      onChange={(e) => handleChange('phone', e.target.value)}
                       className={`w-full rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all ${
                         isDarkMode 
                           ? 'bg-white/10 ring-1 ring-white/20 text-white placeholder-gray-400' 
                           : 'bg-white ring-1 ring-blue-200/50 text-gray-800 placeholder-gray-500'
                       }`}
-                      placeholder="Nome da empresa"
+                      placeholder={t('feedback.phonePlaceholder')}
                     />
                   </div>
                 </div>
 
                 {/* Message */}
-                <div className="mb-6">
+                <div className="mb-6 flex-1">
                   <label className={`block font-semibold mb-2 ${
                     isDarkMode ? 'text-white' : 'text-gray-800'
                   }`}>
-                    Seu Depoimento *
+                    {t('feedback.message')}
                   </label>
                   <textarea
                     value={formData.message}
                     onChange={(e) => handleChange('message', e.target.value)}
                     rows={5}
-                    className={`w-full rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all resize-none ${
+                    className={`w-full rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all resize-none h-full ${
                       isDarkMode 
                         ? 'bg-white/10 ring-1 ring-white/20 text-white placeholder-gray-400' 
                         : 'bg-white ring-1 ring-blue-200/50 text-gray-800 placeholder-gray-500'
                     }`}
-                    placeholder="Conte sua experiência..."
+                    placeholder={t('feedback.messagePlaceholder')}
                   />
                 </div>
 
                 {/* Submit Button */}
                 <button
                   onClick={handleSubmit}
-                  disabled={rating === 0 || !formData.name || !formData.role || !formData.company || !formData.message}
+                  disabled={rating === 0 || !formData.name || !formData.email || !formData.phone || !formData.message}
                   className="w-full bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 disabled:from-gray-600 disabled:to-gray-700 disabled:cursor-not-allowed text-white font-semibold py-4 rounded-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-blue-500/25 flex items-center justify-center gap-2"
                 >
                   <Send className="w-5 h-5" />
-                  Enviar Feedback
+                  {t('feedback.submit')}
                 </button>
               </div>
             ) : (
               // Success Message
-              <div className={`backdrop-blur-sm rounded-3xl p-12 text-center shadow-xl ${
+              <div className={`backdrop-blur-sm rounded-3xl p-12 text-center shadow-xl w-full flex flex-col items-center justify-center ${
                 isDarkMode 
                   ? 'bg-white/5 ring-1 ring-white/10' 
                   : 'bg-white/80 ring-1 ring-blue-200/50'
@@ -296,20 +347,20 @@ const FeedbackTestimonials = () => {
                 <h3 className={`text-3xl font-bold mb-4 ${
                   isDarkMode ? 'text-white' : 'text-gray-800'
                 }`}>
-                  Obrigado pelo seu feedback!
+                  {t('feedback.thanks')}
                 </h3>
                 <p className={`text-lg ${
                   isDarkMode ? 'text-gray-300' : 'text-gray-700'
                 }`}>
-                  Sua opinião é muito importante para nós.
+                  {t('feedback.thanksDesc')}
                 </p>
               </div>
             )}
           </div>
 
           {/* Right Column - Testimonials Carousel */}
-          <div className="relative">
-            <div className={`backdrop-blur-sm rounded-3xl p-8 lg:p-10 shadow-xl min-h-[600px] flex flex-col ${
+          <div className="relative flex">
+            <div className={`backdrop-blur-sm rounded-3xl p-8 lg:p-10 shadow-xl w-full flex flex-col ${
               isDarkMode 
                 ? 'bg-white/5 ring-1 ring-white/10' 
                 : 'bg-white/80 ring-1 ring-blue-200/50'
