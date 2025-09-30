@@ -12,7 +12,7 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 
 // Tipo para as chaves de tradução
 type TranslationKey = 
-  | 'nav.home' | 'nav.about' | 'nav.services' | 'nav.feedback' | 'nav.contact'
+  | 'nav.home' | 'nav.about' | 'nav.services' | 'nav.feedback' | 'nav.contact' | 'nav.lightMode' | 'nav.darkMode' | 'nav.callNow'
   | 'hero.badge' | 'hero.title' | 'hero.description' | 'hero.service1' | 'hero.service2' | 'hero.service3'
   | 'hero.cta' | 'hero.learnMore' | 'hero.residential' | 'hero.commercial' | 'hero.office'
   | 'hero.fullService' | 'hero.professional' | 'hero.corporate' | 'hero.included'
@@ -50,11 +50,11 @@ type TranslationKey =
   | 'services.trash.feature4' | 'services.trash.feature5' | 'services.trash.feature6'
   | 'footer.tagline' | 'footer.description' | 'footer.services' | 'footer.company' | 'footer.contact'
   | 'footer.email' | 'footer.phone' | 'footer.location' | 'footer.rights' | 'footer.privacy'
-  | 'footer.terms' | 'footer.cookies'
+  | 'footer.terms' | 'footer.cookies' | 'footer.testimonials'
   | 'feedback.badge' | 'feedback.title' | 'feedback.subtitle' | 'feedback.rate'
   | 'feedback.name' | 'feedback.namePlaceholder' | 'feedback.email' | 'feedback.emailPlaceholder'
   | 'feedback.phone' | 'feedback.phonePlaceholder' | 'feedback.message' | 'feedback.messagePlaceholder'
-  | 'feedback.submit' | 'feedback.thanks' | 'feedback.thanksDesc';
+  | 'feedback.submit' | 'feedback.thanks' | 'feedback.thanksDesc' ;
 
 type Translations = Record<TranslationKey, string>;
 
@@ -67,6 +67,9 @@ const translations: Record<Language, Translations> = {
     'nav.services': 'Services',
     'nav.feedback': 'Feedback',
     'nav.contact': 'Contact',
+    'nav.lightMode': 'Light Mode',
+    'nav.darkMode': 'Dark Mode',
+    'nav.callNow': 'Call Now',
     
     // Hero
     'hero.badge': 'Family Business • Seattle, WA',
@@ -230,6 +233,7 @@ const translations: Record<Language, Translations> = {
     'footer.privacy': 'Privacy Policy',
     'footer.terms': 'Terms of Use',
     'footer.cookies': 'Cookies',
+    'footer.testimonials': 'Testimonials',
     
     // Feedback
     'feedback.badge': 'Feedback & Testimonials',
@@ -255,6 +259,9 @@ const translations: Record<Language, Translations> = {
     'nav.services': 'Serviços',
     'nav.feedback': 'Feedback',
     'nav.contact': 'Contato',
+    'nav.lightMode': 'Modo Claro',
+    'nav.darkMode': 'Modo Escuro',
+    'nav.callNow': 'Ligar Agora',
     
     // Hero
     'hero.badge': 'Empresa Familiar • Seattle, WA',
@@ -418,6 +425,7 @@ const translations: Record<Language, Translations> = {
     'footer.privacy': 'Política de Privacidade',
     'footer.terms': 'Termos de Uso',
     'footer.cookies': 'Cookies',
+    'footer.testimonials': 'Depoimentos',
     
     // Feedback
     'feedback.badge': 'Feedback & Depoimentos',

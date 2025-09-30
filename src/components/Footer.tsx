@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { useTheme } from '../contexts/ThemeContext';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const Footer = () => {
   const { isDarkMode } = useTheme();
+  const { t } = useLanguage();
   const [email, setEmail] = useState('');
 
   const handleNewsletterSubmit = () => {
     if (email) {
-      alert('Obrigado! Você foi inscrito na nossa newsletter.');
+      alert(t('footer.newsletterSuccess'));
       setEmail('');
     }
   };
@@ -55,15 +57,14 @@ const Footer = () => {
             <p className={`mb-6 text-base lg:text-lg font-medium ${
               isDarkMode ? 'text-gray-300' : 'text-gray-700'
             }`}>
-              Transformando casas em lares impecáveis na região de Seattle
+              {t('footer.tagline')}
             </p>
             
             {/* Description */}
             <p className={`text-sm lg:text-base leading-relaxed mb-6 max-w-md ${
               isDarkMode ? 'text-gray-400' : 'text-gray-600'
             }`}>
-              Empresa familiar especializada em limpeza residencial, comercial e de escritórios. 
-              Atendemos com carinho e profissionalismo desde 2015.
+              {t('footer.description')}
             </p>
             
             {/* Social Links */}
@@ -120,7 +121,7 @@ const Footer = () => {
             <h3 className={`text-lg lg:text-xl font-bold mb-6 ${
               isDarkMode ? 'text-gray-200' : 'text-gray-800'
             }`}>
-              Serviços
+              {t('footer.services')}
             </h3>
             <ul className="space-y-3 lg:space-y-4">
               <li>
@@ -132,7 +133,7 @@ const Footer = () => {
                       : 'text-gray-600 hover:text-blue-700'
                   }`}
                 >
-                  Limpeza Residencial
+                  {t('services.residential.title')}
                 </a>
               </li>
               <li>
@@ -144,7 +145,7 @@ const Footer = () => {
                       : 'text-gray-600 hover:text-blue-700'
                   }`}
                 >
-                  Limpeza Comercial
+                  {t('services.commercial.title')}
                 </a>
               </li>
               <li>
@@ -156,7 +157,7 @@ const Footer = () => {
                       : 'text-gray-600 hover:text-blue-700'
                   }`}
                 >
-                  Limpeza de Escritórios
+                  {t('services.office.title')}
                 </a>
               </li>
               <li>
@@ -168,7 +169,7 @@ const Footer = () => {
                       : 'text-gray-600 hover:text-blue-700'
                   }`}
                 >
-                  Move In/Move Out
+                  {t('services.moveInOut.title')}
                 </a>
               </li>
               <li>
@@ -180,7 +181,7 @@ const Footer = () => {
                       : 'text-gray-600 hover:text-blue-700'
                   }`}
                 >
-                  Remoção de Lixo
+                  {t('services.trash.title')}
                 </a>
               </li>
             </ul>
@@ -191,7 +192,7 @@ const Footer = () => {
             <h3 className={`text-lg lg:text-xl font-bold mb-6 ${
               isDarkMode ? 'text-gray-200' : 'text-gray-800'
             }`}>
-              Empresa
+              {t('footer.company')}
             </h3>
             <ul className="space-y-3 lg:space-y-4">
               <li>
@@ -203,7 +204,7 @@ const Footer = () => {
                       : 'text-gray-600 hover:text-blue-700'
                   }`}
                 >
-                  Sobre Nós
+                  {t('nav.about')}
                 </a>
               </li>
               <li>
@@ -215,33 +216,7 @@ const Footer = () => {
                       : 'text-gray-600 hover:text-blue-700'
                   }`}
                 >
-                  Depoimentos
-                </a>
-              </li>
-             
-              <li>
-                <a 
-                  href="#areas" 
-                  className={`text-sm lg:text-base transition-colors duration-300 block ${
-                    isDarkMode 
-                      ? 'text-gray-400 hover:text-blue-400' 
-                      : 'text-gray-600 hover:text-blue-700'
-                  }`}
-                >
-                  Áreas Atendidas
-                </a>
-              </li>
-
-              <li>
-                <a 
-                  href="#faq" 
-                  className={`text-sm lg:text-base transition-colors duration-300 block ${
-                    isDarkMode 
-                      ? 'text-gray-400 hover:text-blue-400' 
-                      : 'text-gray-600 hover:text-blue-700'
-                  }`}
-                >
-                  Perguntas Frequentes
+                  {t('footer.testimonials')}
                 </a>
               </li>
             </ul>
@@ -253,7 +228,7 @@ const Footer = () => {
           <h3 className={`text-lg lg:text-xl font-bold mb-6 ${
             isDarkMode ? 'text-gray-200' : 'text-gray-800'
           }`}>
-            Contato
+            {t('footer.contact')}
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {/* Email */}
@@ -262,7 +237,7 @@ const Footer = () => {
               <div>
                 <div className={`text-xs lg:text-sm mb-1 ${
                   isDarkMode ? 'text-gray-400' : 'text-gray-600'
-                }`}>Email</div>
+                }`}>{t('footer.email')}</div>
                 <a 
                   href="mailto:contato@sparklhavencleaning.com" 
                   className={`text-sm lg:text-base transition-colors duration-300 break-all ${
@@ -282,7 +257,7 @@ const Footer = () => {
               <div>
                 <div className={`text-xs lg:text-sm mb-1 ${
                   isDarkMode ? 'text-gray-400' : 'text-gray-600'
-                }`}>Telefone</div>
+                }`}>{t('footer.phone')}</div>
                 <a 
                   href="tel:+14254765411" 
                   className={`text-sm lg:text-base transition-colors duration-300 ${
@@ -302,7 +277,7 @@ const Footer = () => {
               <div>
                 <div className={`text-xs lg:text-sm mb-1 ${
                   isDarkMode ? 'text-gray-400' : 'text-gray-600'
-                }`}>Localização</div>
+                }`}>{t('footer.location')}</div>
                 <div className={`text-sm lg:text-base ${
                   isDarkMode ? 'text-gray-200' : 'text-gray-800'
                 }`}>
@@ -321,7 +296,7 @@ const Footer = () => {
             <div className={`text-sm lg:text-base text-center sm:text-left ${
               isDarkMode ? 'text-gray-400' : 'text-gray-600'
             }`}>
-              © 2025 SparklHaven Cleaning Service. Todos os direitos reservados.
+              {t('footer.rights')}
             </div>
             <div className="flex flex-wrap justify-center sm:justify-end gap-4 lg:gap-8">
               <a 
@@ -332,7 +307,7 @@ const Footer = () => {
                     : 'text-gray-600 hover:text-blue-700'
                 }`}
               >
-                Política de Privacidade
+                {t('footer.privacy')}
               </a>
               <a 
                 href="#terms" 
@@ -342,7 +317,7 @@ const Footer = () => {
                     : 'text-gray-600 hover:text-blue-700'
                 }`}
               >
-                Termos de Uso
+                {t('footer.terms')}
               </a>
               <a 
                 href="#cookies" 
@@ -352,7 +327,7 @@ const Footer = () => {
                     : 'text-gray-600 hover:text-blue-700'
                 }`}
               >
-                Cookies
+                {t('footer.cookies')}
               </a>
             </div>
           </div>
