@@ -53,7 +53,7 @@ export default function Navbar() {
   return (
     <>
       {/* Navbar Desktop - sempre visível */}
-      <header className="hidden lg:block fixed top-0 left-0 right-0 z-50 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white shadow-lg">
+      <header className="hidden lg:block fixed top-0 left-0 right-0 z-50 g-gradient-to-br from-blue-50 via-sky-100 to-indigo-50 shadow-lg">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex justify-between items-center h-20">
             
@@ -77,7 +77,7 @@ export default function Navbar() {
                   key={menuItem.item}
                   onClick={() => handleNavigation(menuItem.path)}
                   className={`px-4 py-2 text-sm hover:bg-blue-500/20 rounded-lg flex items-center space-x-2 transition-all ${
-                    activeHash === menuItem.path ? 'bg-blue-500/30 text-white' : 'text-gray-300'
+                    activeHash === menuItem.path ? 'bg-blue-500/30 text-gray-400' : 'text-gray-700'
                   }`}
                 >
                   <span>{menuItem.icon}</span>
@@ -116,13 +116,13 @@ export default function Navbar() {
               <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center text-xl">
                 ✨
               </div>
-              <span className="text-lg font-bold text-blue-400">SparklHaven</span>
+              <span className="text-lg font-bold text-gray-400">SparklHaven</span>
             </button>
             
             {/* Botão Hamburger */}
             <button 
               onClick={toggleMobileMenu} 
-              className="p-2 text-gray-200 hover:text-blue-400 transition-colors"
+              className="p-2 text-gray-600 hover:text-blue-400 transition-colors"
               aria-label="Abrir menu"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
