@@ -30,9 +30,13 @@ const CompleteServicesPage = () => {
       color: "from-blue-500 to-cyan-500",
       borderColor: "ring-blue-400/40",
       images: [
-        "../../assets/services/residential-one.jpeg",
-        "/assets/services/residential-two.PNG",
-        "/assets/services/residential-three.jpeg"
+        "../../assets/services/residential/residential-one.jpeg",
+        "/assets/services/residential/residential-two.jpeg",
+        "/assets/services/residential/residential-three.jpeg",
+        "/assets/services/residential/office.jpg",
+        "/assets/services/residential/table.jpg",
+        "/assets/services/residential/room.jpg",
+        "/assets/services/residential/porta.jpg"
       ]
     },
     {
@@ -51,9 +55,12 @@ const CompleteServicesPage = () => {
       color: "from-green-500 to-teal-500",
       borderColor: "ring-green-400/40",
       images: [
-        "/images/commercial-1.jpg",
-        "/images/commercial-2.jpg",
-        "/images/commercial-3.jpg"
+        "/assets/services/commercial/clean.png",
+        "/assets/services/commercial/floor.png",
+        "/assets/services/commercial/limpando-predio.jpg",
+        "/assets/services/commercial/table.png",
+        "/assets/services/commercial/vacum.png",
+        "/assets/services/commercial/olhando.jpg",
       ]
     },
     {
@@ -72,9 +79,11 @@ const CompleteServicesPage = () => {
       color: "from-purple-500 to-pink-500",
       borderColor: "ring-purple-400/40",
       images: [
-        "/images/office-1.jpg",
-        "/images/office-2.jpg",
-        "/images/office-3.jpg"
+        "/assets/services/office/one.jpg",
+        "/assets/services/office/two.webp",
+        "/assets/services/office/three.png",
+        "/assets/services/office/four.webp",
+        "/assets/services/office/five.jpg",
       ]
     },
     {
@@ -93,10 +102,14 @@ const CompleteServicesPage = () => {
       color: "from-orange-500 to-red-500",
       borderColor: "ring-orange-400/40",
       images: [
-        "../../assets/services/move-in-one.PNG",
-        "../../assets/services/move-in-two.jpeg",
-        "../../assets/services/move-in-three.jpeg",
-        "../../assets/services/move-in-four.jpeg"
+        "/assets/services/move/move-in-one.PNG",
+        "/assets/services/move/move-in-two.jpeg",
+        "/assets/services/move/move-in-three.jpeg",
+        "/assets/services/move/move-in-four.jpeg",
+        "/assets/services/move/limpeza.jpg",
+        "/assets/services/move/olhando.jpg",
+        "/assets/services/move/visualizando.jpg",
+        
       ]
     },
     {
@@ -115,19 +128,19 @@ const CompleteServicesPage = () => {
       color: "from-yellow-500 to-orange-500",
       borderColor: "ring-yellow-400/40",
       images: [
-        "/images/trash-1.jpg",
-        "/images/trash-2.jpg",
-        "/images/trash-3.jpg"
+        "/assets/services/trash/one.webp",
+        "/assets/services/trash/two.png",
+        "/assets/services/trash/three.webp",
       ]
     }
   ];
 
   useEffect(() => {
-    const intervals = mainServices.map((_, serviceIndex) => {
+    const intervals = mainServices.map((service, serviceIndex) => {
       return setInterval(() => {
         setCurrentImageIndexes(prev => ({
           ...prev,
-          [serviceIndex]: (prev[serviceIndex] + 1) % 3
+          [serviceIndex]: (prev[serviceIndex] + 1) % service.images.length
         }));
       }, 5000);
     });
@@ -240,15 +253,17 @@ const CompleteServicesPage = () => {
                             alt={`${t(service.titleKey)} - Photo ${imgIdx + 1}`}
                             className="w-full h-full object-cover"
                             onError={(e) => {
-                              e.currentTarget.style.display = 'none';
-                              const placeholder = e.currentTarget.nextElementSibling as HTMLElement;
+                              const imgElement = e.currentTarget as HTMLImageElement;
+                              imgElement.style.display = 'none';
+                              const placeholder = imgElement.nextElementSibling as HTMLElement;
                               if (placeholder) placeholder.style.display = 'flex';
                             }}
                           />
                           <div className="w-full h-full bg-gradient-to-br from-gray-700 to-gray-800 hidden items-center justify-center">
                             <div className="text-center">
+                              <div className="text-8xl mb-4 opacity-50">📷</div>
                               <span className="text-6xl mb-4 block">{service.icon}</span>
-                              <p className="text-gray-400 text-sm">Image {imgIdx + 1} of 3</p>
+                              <p className="text-gray-400 text-sm">Image {imgIdx + 1} of {service.images.length}</p>
                               <p className="text-gray-500 text-xs mt-2">{t(service.titleKey)}</p>
                             </div>
                           </div>
@@ -256,7 +271,7 @@ const CompleteServicesPage = () => {
                       ))}
 
                       <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2 z-10">
-                        {[0, 1, 2].map((dotIndex) => (
+                        {service.images.map((_, dotIndex) => (
                           <button
                             key={dotIndex}
                             onClick={() => setCurrentImageIndexes(prev => ({

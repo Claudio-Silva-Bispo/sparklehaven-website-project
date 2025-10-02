@@ -103,22 +103,22 @@ const About = () => {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 items-center">
             
             {/* Avatar/Profile */}
-            <div className="text-center lg:text-left">
-              <div className="w-32 h-32 lg:w-40 lg:h-40 mx-auto lg:mx-0 mb-6 rounded-2xl overflow-hidden flex items-center justify-center bg-gradient-to-br from-blue-500 to-blue-600 shadow-lg">
+            <div className="text-center lg:text-left flex flex-col items-center lg:items-start">
+              <div className="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 xl:w-80 xl:h-80 mx-auto lg:mx-0 mb-6 rounded-2xl overflow-hidden flex items-center justify-center bg-gradient-to-br from-blue-500 to-blue-600 shadow-2xl">
                 {showPhoto ? (
                   <img
-                    src="/assets/family/couple-photo.jpg" 
+                    src="/assets/services/couple/foto.jpg" 
                     alt="Nossa Família"
                     className="w-full h-full object-cover"
                   />
                 ) : (
-                  <div className="w-full h-full flex items-center justify-center text-5xl lg:text-6xl">
+                  <div className="w-full h-full flex items-center justify-center text-6xl lg:text-7xl">
                     👨‍👩‍👧‍👦
                   </div>
                 )}
               </div>
 
-              <div className={`font-semibold mb-4 ${
+              <div className={`font-semibold mb-2 text-lg ${
                 isDarkMode ? 'text-blue-400' : 'text-blue-700'
               }`}>
                 {t('about.company')}
