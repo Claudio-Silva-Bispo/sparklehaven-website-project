@@ -34,8 +34,8 @@ function AppContent({ Component, pageProps }: AppProps) {
     <>
       <Head>
         {/* Favicon */}
-        <link rel="icon" type="image/png" href="/favicon.png" />
-        <link rel="apple-touch-icon" href="/favicon.png" />
+        <link rel="icon" type="image/png" href="assets/logo/logo-sem-fundo.PNG" />
+        <link rel="apple-touch-icon" href="assets/logo/logo-sem-fundo.PNG" />
         
         {/* Viewport */}
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -47,8 +47,8 @@ function AppContent({ Component, pageProps }: AppProps) {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "LocalBusiness",
-              "name": "Sparkl Haven Cleaning Service",
-              "image": "https://sparklhavencleaningservice.com/logo.png",
+              "name": "SparklHaven Cleaning Service",
+              "image": "https://sparklhavencleaningservice.com/logo/logo-sem-fundo.PNG",
               "url": "https://sparklhavencleaningservice.com",
               "telephone": "+1-425-476-5411",
               "priceRange": "$$",

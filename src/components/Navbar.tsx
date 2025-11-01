@@ -71,8 +71,8 @@ export default function Navbar() {
                 onClick={() => handleNavigation('#home')} 
                 className="flex items-center gap-3 hover:opacity-80 transition-opacity"
               >
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center text-2xl">
-                  ✨
+                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-white-600 rounded-xl flex items-center justify-center text-2xl">
+                  <img src="../assets/logo/logo-sem-fundo.PNG" alt="Logo da empresa" />
                 </div>
                 <span className={`text-xl font-bold ${
                   isDarkMode ? 'text-blue-400' : 'text-blue-600'
@@ -159,12 +159,12 @@ export default function Navbar() {
               onClick={() => handleNavigation('#home')} 
               className="flex items-center gap-2"
             >
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center text-xl">
-                ✨
+              <div className="w-10 h-10 bg-gradient-to-br from-white-500 to-blue-600 rounded-lg flex items-center justify-center text-xl">
+                <img src="../assets/logo/logo-sem-fundo.PNG" alt="Logo da empresa" />
               </div>
               <span className={`text-lg font-bold ${
                 isDarkMode ? 'text-blue-400' : 'text-blue-600'
-              }`}>SparklHaven</span>
+              }`}>SparklHaven Cleaning</span>
             </button>
             
             {/* Botão Hamburger */}

@@ -9,7 +9,7 @@ export default function Home() {
     <>
       <Head>
         {/* Título otimizado para SEO local */}
-        <title>Sparkl Haven Cleaning Service - Professional House Cleaning in Seattle, Kirkland & Bellevue | WA</title>
+        <title>SparklHaven Cleaning Service - Professional House Cleaning in Seattle, Kirkland & Bellevue | WA</title>
         
         {/* Descrição otimizada com palavras-chave e localização */}
         <meta 
@@ -34,16 +34,16 @@ export default function Home() {
         
         {/* Open Graph para redes sociais */}
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Sparkl Haven Cleaning Service - Seattle, Kirkland & Bellevue" />
+        <meta property="og:title" content="SparklHaven Cleaning Service - Seattle, Kirkland & Bellevue" />
         <meta property="og:description" content="Professional cleaning services for homes and offices in Greater Seattle Area. Residential, commercial, and move in/out cleaning." />
-        <meta property="og:image" content="https://sparklhavencleaningservice.com/og-image.png" />
+        <meta property="og:image" content="https://sparklhavencleaningservice.com/logo/logo-sem-fundo.PNG" />
         <meta property="og:url" content="https://sparklhavencleaningservice.com" />
         <meta property="og:site_name" content="Sparkl Haven Cleaning Service" />
         <meta property="og:locale" content="en_US" />
         
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Sparkl Haven Cleaning Service - Seattle Area" />
+        <meta name="twitter:title" content="SparklHaven Cleaning Service - Seattle Area" />
         <meta name="twitter:description" content="Professional house and office cleaning in Seattle, Kirkland, Bellevue, and surrounding areas" />
         <meta name="twitter:image" content="https://sparklhavencleaningservice.com/twitter-image.png" />
         
@@ -57,7 +57,7 @@ export default function Home() {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebSite",
-              "name": "Sparkl Haven Cleaning Service",
+              "name": "SparklHaven Cleaning Service",
               "url": "https://sparklhavencleaningservice.com",
               "potentialAction": {
                 "@type": "SearchAction",
@@ -78,7 +78,7 @@ export default function Home() {
               "serviceType": "Cleaning Service",
               "provider": {
                 "@type": "LocalBusiness",
-                "name": "Sparkl Haven Cleaning Service",
+                "name": "SparklHaven Cleaning Service",
                 "telephone": "+1-425-476-5411",
                 "url": "https://sparklhavencleaningservice.com"
               },
